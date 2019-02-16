@@ -137,17 +137,32 @@ div {
 }
 
 #me {
-    height: 100vh;
-    width: 100%;
-    display: flex;
-}
-#aboutaImage {
-    background-image: url(media/me.jpg);
     width: 50%;
-    background-position: center;
-    height: 100vh;
-    background-size: cover;
+    display: flex; 
+    padding:10em;
+    text-decoration: none;
 }
+#me > .hi {
+  width: 20rem;
+  padding: 1em;
+  color: black;
+  font-size: 48px;
+  padding-top: 5em;
+  margin-right: 2em;
+  
+}
+#me > .me-img { 
+  flex: auto;
+  padding-left:2em;
+  opacity:.25;
+  transition: opacity 2s;
+}
+
+img:hover{
+  opacity:1;
+  transition: opacity 2s;
+}
+
 #aboutText{
     width: 50%;
     height: 100vh;

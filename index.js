@@ -1,6 +1,11 @@
-$('.contact').on('click', function () {
+var imgHover = document.getElementById('imgMe');
 
-    $('.contactinfo').toggleClass('open')
+imgHover.addEventListener('mouseover', function () {
+    imgHover.style.opacity = 1;
+    imgHover.src = 'media/me.jpg';
+});
 
-    return false
-})
+ingHover.addEventListener('mouseout', function () {
+    .style.opacity = .25;
+    imgHover.src = 'media/me.jpg';
+});
