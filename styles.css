@@ -154,7 +154,7 @@ div {
 #me > .me-img { 
   flex: auto;
   padding-left:2em;
-  opacity:.25;
+  opacity:.75;
   transition: opacity 2s;
 }
 
@@ -163,10 +163,15 @@ img:hover{
   transition: opacity 2s;
 }
 
-#aboutText{
+#aboutText {
     width: 50%;
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.project-header h1 {
+    font-size: 32px;
+
 }

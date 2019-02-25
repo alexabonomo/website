@@ -11,6 +11,8 @@ You can see the orinignal open source example at https://github.com/mrdoob/three
     
     <link href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700|Libre+Franklin:100,100i,200,200i,300,300i,400,400i"
         rel="stylesheet">
+    <script src="libraries/blotter.min.js"></script>
+    <script src="libraries/materials/channelSplitMaterial.js"></script>
 </head>
 <body>
     <div id="info">
@@ -18,11 +20,8 @@ You can see the orinignal open source example at https://github.com/mrdoob/three
        <span id="options"></span> <br />
     
     </div>
-    <script src="libraries/three.js"></script>
-    <script src="libraries/WebGL.js"></script>
-    <!-- <script src="libraries/stats.min.js"></script>
-    <script src="libraries/dat.gui.min.js"></script> -->
-    
+    <script src="libraries/three.js"></script> 
+    <script src="libraries/WebGL.js"></script>  
     <script src="libraries/GPUComputationRenderer.js"></script>
 
     <script id="fragmentShaderPosition" type="x-shader/x-fragment">
@@ -472,8 +471,30 @@ You can see the orinignal open source example at https://github.com/mrdoob/three
     </script>
 
     <header>
-        <h1>Alexa Ann Bonomo</h1>
+        <!-- <h1>Alexa Ann Bonomo</h1> -->
+        <div id = name></div>
     </header>
+
+    <script>
+        var text = new Blotter.Text("Alexa Ann Bonomo", {
+            family: 'Libre Baskerville', 
+            size: 120,
+            fill: "#171717"
+        })
+
+        var material = new Blotter.ChannelSplitMaterial();
+        var blotter = new Blotter(material, { texts: text });
+        var scope = blotter.forText(text);
+
+        material.uniforms.uOffset.value = 0.05;
+        material.uniforms.uRotation.value = 67;
+        material.uniforms.uAnimateNoise.value = 1.0;
+
+
+        scope.appendTo(document.querySelector('#name'));
+
+
+    </script>
 
 
     <footer>
