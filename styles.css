@@ -171,7 +171,6 @@ img:hover{
     align-items: center;
 }
 
-.project-header h1 {
-    font-size: 32px;
-
+.project-container {
+    grid-template: 1fr 1fr 1fr/ 1fr 1fr;
 }
