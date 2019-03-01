@@ -485,6 +485,12 @@ You can see the orinignal open source example at https://github.com/mrdoob/three
         var material = new Blotter.LiquidDistortMaterial();
         var blotter = new Blotter(material, { texts: text });
         var scope = blotter.forText(text);
+        
+        material.uniforms.uSpeed.value = 1.1;
+        material.uniforms.uVolatility.value = 0.02;
+
+        
+
 
 
         scope.appendTo(document.querySelector('#name'));
