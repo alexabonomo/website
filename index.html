@@ -15,6 +15,10 @@ You can see the orinignal open source example at https://github.com/mrdoob/three
     <script src="libraries/materials/liquidDistortMaterial.js"></script>
 </head>
 <body>
+    <header>
+        <!-- <h1>Alexa Ann Bonomo</h1> -->
+        <div id=name></div>
+    </header> 
     <div id="info">
         <a href="http://threejs.org" target="_blank" rel="noopener"></a><span id="birds"></span><br />
        <span id="options"></span> <br />
@@ -470,15 +474,10 @@ You can see the orinignal open source example at https://github.com/mrdoob/three
         }
     </script>
 
-    <header>
-        <!-- <h1>Alexa Ann Bonomo</h1> -->
-        <div id = name></div>
-    </header>
-
     <script>
-        var text = new Blotter.Text("Alexa Ann Bonomo", {
+        var text = new Blotter.Text(" Alexa Ann Bonomo <br>", {
             family: 'Libre Baskerville', 
-            size: 120,
+            size: 60,
             fill: "#171717"
         })
 
@@ -486,8 +485,8 @@ You can see the orinignal open source example at https://github.com/mrdoob/three
         var blotter = new Blotter(material, { texts: text });
         var scope = blotter.forText(text);
         
-        material.uniforms.uSpeed.value = 1.1;
-        material.uniforms.uVolatility.value = 0.02;
+        material.uniforms.uSpeed.value = 0.5;
+        material.uniforms.uVolatility.value = 0.01;
 
         
 

@@ -11,12 +11,9 @@ canvas {
 }
 
 header {
-    text-align: right;
-    font-size: 42px;
-    position: absolute;
+    position: fixed;
     text-decoration: none;
-    right: 150px;
-    top: 300px;
+    width: 100%;
 }
 
 ul {
