@@ -1,7 +1,7 @@
 body {
     /* background-color: white; */
     font-family: 'Libre Baskerville', serif;
-      color: #444;
+      color: #333;
 
 }
 
@@ -142,7 +142,7 @@ div {
 #me > .hi {
   width: 20rem;
   padding: 1em;
-  color: #;
+  color: #333;
   font-size: 48px;
   padding-top: 5em;
   margin-right: 2em;
