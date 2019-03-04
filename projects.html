@@ -4,6 +4,8 @@
         <meta charset="utf-8">
         <title>Alexa Ann Bonomo</title>
         <link rel="stylesheet" type="text/css" href="projects.css">
+        <script src="libraries/materials/liquidDistortMaterial.js"></script>
+        
         
         <link
             href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700|Libre+Franklin:100,100i,200,200i,300,300i,400,400i"
@@ -20,34 +22,133 @@
         }
     </style>
     <body>
+        <header>
+            <div id="hello">
+                <p>Hello! <br> I am currently working on this page. <br> In the meantime, check out this <br> cool spot I found hiking! :]</p>
+            </div>
+        </header>
         <script src="libraries/three.js"></script>
+        <script src="libraries/TrackballControls.js"></script>
         <script>
+            var text = new Blotter.Text("hello!", {
+                    family: 'Libre Baskerville',
+                    size: 60,
+                    fill: "#ffffff"
+                })
+
+                var material = new Blotter.LiquidDistortMaterial();
+                var blotter = new Blotter(material, { texts: text });
+                var scope = blotter.forText(text);
+
+                material.uniforms.uSpeed.value = 0.5;
+                material.uniforms.uVolatility.value = 0.01;
+
+
+
+
+
+                scope.appendTo(document.querySelector('#name'));
+        </script>
+        <script>
+            var mouseX, mouseY;
+
+        
+
             var scene = new THREE.Scene();
             var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 
+            var aspectRatio = window.innerWidth / window.innerHeight;
+            camera = new THREE.PerspectiveCamera(75, aspectRatio, 0.1, 100000);
 
-            var renderer = new THREE.WebGLRenderer();
+
+            var renderer = new THREE.WebGLRenderer({ antialias: true });
+            renderer.setPixelRatio(window.devicePixelRatio);
             renderer.setSize(window.innerWidth, window.innerHeight);
             document.body.appendChild(renderer.domElement);
 
-            var texture = new THREE.TextureLoader().load('media/emerald.png');
+            var texture = new THREE.TextureLoader().load('media/oakland.jpg');
 
             var geometry = new THREE.PlaneGeometry(6, 4);
-            var material = new THREE.MeshBasicMaterial({ map: texture });
+            var material = new THREE.MeshBasicMaterial({ map: texture, side: THREE.DoubleSide });
             var cube = new THREE.Mesh(geometry, material);
             scene.add(cube);
 
             camera.position.z = 5;
 
+            document.querySelector('body').addEventListener('mousemove', onDocumentMouseMove, false);
+            document.querySelector('body').addEventListener('touchstart', touch_start, false);
+            document.addEventListener('resize', onResize);
+            
+            var controls = new THREE.TrackballControls(camera);
+                controls.rotateSpeed = 0;
+                controls.zoomSpeed = .001;
+                controls.panSpeed = 0;
 
-            var animate = function () {
-                requestAnimationFrame(animate);
-                renderer.render(scene, camera);
+            var touchable = false;
+            function touch_start (event) {
+                    touchable = true;
+                    controls.rotateSpeed = .005;
+                    controls.panSpeed = .005;
+                    material.side = THREE.DoubleSide;
+                    console.log('touch start');
+                }
+
+            var onResize = function (event) {
+                renderer.setSize(window.innerWidth, window.innerHeight);
+                camera.aspect = window.innerWidth / window.innerHeight;
+                camera.updateProjectionMatrix();
             };
 
-            animate();
+           function onDocumentMouseMove  (event) {
+                mouseX = event.clientX;
+                mouseY = event.clientY;
+                // console.log('mousemove: ' + mouseX + ", " + mouseY);
+            };
+
+
+            function onWindowResize() {
+                    camera.aspect = window.innerWidth / window.innerHeight;
+                    camera.updateProjectionMatrix();
+                    renderer.setSize(window.innerWidth, window.innerHeight);
+                    controls.handleResize();
+                    render();
+                }
+
+            window.addEventListener('resize', onWindowResize, false);
+
+           var render = function () {
+               if (mouseY != undefined && !touchable) {
+                   var mx = mouseX / window.innerWidth;
+                   var my = mouseY / window.innerHeight;
+                   var vx = 10 * mx - 5;
+                   var vy = -10 * my + 5;
+                   
+               } else {
+                   var mx = Math.random() * 1.;
+                   var my = Math.random() * 1.;
+                   var vx = 10 * mx - 5;
+                   var vy = -10 * my + 5;
+               }
+
+                if (mouseY != undefined && !touchable) {
+                    var moremove = (camera.position.z > 5) ? camera.position.z * 0.001 : 1;
+                    camera.position.x = -5 * (moremove) * mouseX / window.innerWidth + 3.5 * (moremove);
+                    camera.position.y = 5 * (moremove) * mouseY / window.innerHeight - 3.5 * (moremove);
+                    camera.lookAt(scene.position);
+                    // console.log('camera moved');
+                    console.log('camera position: ' + camera.position.x + ', ' + camera.position.y + ', ' + camera.position.y)
+                }   
+                    renderer.render(scene, camera);
+                    requestAnimationFrame(render);
+                    controls.update(render);
+                    // console.log('render');
+                };
+
+            render();
+
 
         </script>
+        
         <footer>
             <nav>
                 <ul>
