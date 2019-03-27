@@ -13,6 +13,7 @@ You can see the orinignal open source example at https://github.com/mrdoob/three
         rel="stylesheet">
     <script src="libraries/blotter.min.js"></script>
     <script src="libraries/materials/liquidDistortMaterial.js"></script>
+    
 </head>
 <body>
     <header>
@@ -27,6 +28,8 @@ You can see the orinignal open source example at https://github.com/mrdoob/three
     <script src="libraries/three.js"></script> 
     <script src="libraries/WebGL.js"></script>  
     <script src="libraries/GPUComputationRenderer.js"></script>
+    <script src="libraries/GLTFLoader.js"></script>
+    <script src="libraries/STLLoader.js"></script>
 
     <script id="fragmentShaderPosition" type="x-shader/x-fragment">
     			uniform float time;
@@ -201,7 +204,7 @@ You can see the orinignal open source example at https://github.com/mrdoob/three
     			uniform vec3 color;
     			void main() {
     				// Fake colors for now
-    				float z2 = 0.2 + ( 1000. - z ) / 1000. * vColor.x;
+    				float z2 = 1.0 + ( 1000. - z ) / 1000. * vColor.x;
     				gl_FragColor = vec4( z2, z2, z2, 1. );
     			}
     		</script>
@@ -230,6 +233,8 @@ You can see the orinignal open source example at https://github.com/mrdoob/three
             this.addAttribute('reference', references);
             this.addAttribute('birdVertex', birdVertex);
             // this.addAttribute( 'normal', new Float32Array( points * 3 ), 3 );
+
+
             var v = 0;
             function verts_push() {
                 for (var i = 0; i < arguments.length; i++) {
@@ -262,8 +267,8 @@ You can see the orinignal open source example at https://github.com/mrdoob/three
                 var x = (i % WIDTH) / WIDTH;
                 var y = ~ ~(i / WIDTH) / WIDTH;
                 var c = new THREE.Color(
-                    0x444444 +
-                    ~ ~(v / 9) / BIRDS * 0x666666
+                    0xc4f2cc +
+                    ~ ~(v / 3) / BIRDS * 0xc4f2cc
                 );
                 birdColors.array[v * 3 + 0] = c.r;
                 birdColors.array[v * 3 + 1] = c.g;
@@ -272,7 +277,7 @@ You can see the orinignal open source example at https://github.com/mrdoob/three
                 references.array[v * 2 + 1] = y;
                 birdVertex.array[v] = v % 9;
             }
-            this.scale(0.2, 0.2, 0.2);
+            this.scale(0.1, 0.1, 0.1);
         };
         THREE.BirdGeometry.prototype = Object.create(THREE.BufferGeometry.prototype);
         var container, stats;
@@ -308,11 +313,21 @@ You can see the orinignal open source example at https://github.com/mrdoob/three
             camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 3000);
             camera.position.z = 350;
             scene = new THREE.Scene();
-            scene.background = new THREE.Color(0xffffff);
-            scene.fog = new THREE.Fog(0xffffff, 100, 1000);
-            renderer = new THREE.WebGLRenderer();
+            // scene.background = new THREE.Color(0xffffff);
+            // scene.fog = new THREE.Fog(0xffffff, 100, 1000);
+
+            scene.add(new THREE.HemisphereLight(0x443333, 0x111122));
+            addShadowedLight(1, 1, 1, 0xffffff, 1.35);
+            addShadowedLight(0.5, 1, - 1, 0xffaa00, 1);
+
+
+
+            renderer = new THREE.WebGLRenderer( { alpha: true } );
             renderer.setPixelRatio(window.devicePixelRatio);
             renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.setClearColor(0x000000, 0);
+            renderer.shadowMap.enabled = true;
+
             container.appendChild(renderer.domElement);
             initComputeRenderer();
             // stats = new Stats();
@@ -335,12 +350,127 @@ You can see the orinignal open source example at https://github.com/mrdoob/three
                 velocityUniforms.cohesionDistance.value = effectController.cohesion;
                 velocityUniforms.freedomFactor.value = effectController.freedom;
             };
+
             // valuesChanger();
             // gui.add(effectController, "seperation", 0.0, 100.0, 1.0).onChange(valuesChanger);
             // gui.add(effectController, "alignment", 0.0, 100, 0.001).onChange(valuesChanger);
             // gui.add(effectController, "cohesion", 0.0, 100, 0.025).onChange(valuesChanger);
             // gui.close();
             initBirds();
+        }
+
+        ////////////////////PLANT///////////////////
+
+            // Instantiate a loader
+            var loaderPlant = new THREE.GLTFLoader();
+            var loaderVenus = new THREE.STLLoader();
+            var texture = new THREE.TextureLoader()
+
+           
+
+            // Load a glTF resource
+            loaderPlant.load(
+                // resource URL
+                'models/archive/UmbrellaPalmTree.gltf',
+                // called when the resource is loaded
+                function (gltf) {
+
+                    var light = new THREE.AmbientLight(0xffffff); // soft white light
+
+
+                    scene.add(gltf.scene);
+                    scene.add(light);
+
+                    gltf.animations; // Array<THREE.AnimationClip>
+                    gltf.scene; // THREE.Scene
+                    gltf.scenes; // Array<THREE.Scene>
+                    gltf.cameras; // Array<THREE.Camera>
+                    gltf.asset; // Object
+                    gltf.scene.translateZ(335);
+                    gltf.scene.translateY(-7);
+                    gltf.scene.translateX(10);
+
+                },
+                // called while loading is progressing
+                function (xhr) {
+
+                    console.log((xhr.loaded / xhr.total * 100) + '% loaded');
+
+                },
+                // called when loading has errors
+                function (error) {
+
+                    console.log('An error happened');
+
+                }
+            );
+
+            var materialVenus = new THREE.MeshBasicMaterial({ color: 0x000000 }); 
+            loaderVenus.load(
+                    // resource URL
+                    'models/venus.stl',
+                    // called when resource is loaded
+                    function (object) {
+
+                        var material = new THREE.MeshPhongMaterial({ color: 0x666666, specular: 0x111111, shininess: 200 });
+                        var mesh = new THREE.Mesh(object, material);
+
+                        mesh.position.set(300, -300, -300);
+                        mesh.rotation.set(- Math.PI / 2, 0, 0);
+                        mesh.scale.set(0.3, 0.3, 0.3);
+
+                        // object.translateZ(-1700);
+                        // object.translateY(-900);
+                        // object.translateX(900);
+
+                        mesh.castShadow = true;
+                        mesh.receiveShadow = true;
+                        scene.add(mesh);
+                        
+                    
+
+                    },
+                    // called when loading is in progresses
+                    function (xhr) {
+
+                        console.log((xhr.loaded / xhr.total * 100) + '% loaded');
+
+                    },
+                    // called when loading has errors
+                    function (error) {
+
+                        console.log('An error happened');
+
+                    }
+                );
+
+    renderer.gammaOutput = true;
+    renderer.gammaFactor = 2.2;
+
+
+            // If texture is used for color information, set colorspace.
+            texture.encoding = THREE.sRGBEncoding;
+
+            // UVs use the convention that (0, 0) corresponds to the upper left corner of a texture.
+             texture.flipY = false;
+
+
+
+    function addShadowedLight(x, y, z, color, intensity) {
+            var directionalLight = new THREE.DirectionalLight(color, intensity);
+            directionalLight.position.set(x, y, z);
+            scene.add(directionalLight);
+            directionalLight.castShadow = true;
+            var d = 1;
+            directionalLight.shadow.camera.left = - d;
+            directionalLight.shadow.camera.right = d;
+            directionalLight.shadow.camera.top = d;
+            directionalLight.shadow.camera.bottom = - d;
+            directionalLight.shadow.camera.near = 1;
+            directionalLight.shadow.camera.far = 4;
+            directionalLight.shadow.mapSize.width = 1024;
+            directionalLight.shadow.mapSize.height = 1024;
+            directionalLight.shadow.bias = - 0.002;
         }
         
         function initComputeRenderer() {
@@ -379,7 +509,7 @@ You can see the orinignal open source example at https://github.com/mrdoob/three
             var geometry = new THREE.BirdGeometry();
             // For Vertex and Fragment
             birdUniforms = {
-                color: { value: new THREE.Color(0xff2200) },
+                color: { value: new THREE.Color(0x000000) },
                 texturePosition: { value: null },
                 textureVelocity: { value: null },
                 time: { value: 1.0 },
