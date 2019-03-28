@@ -17,12 +17,12 @@ You can see the orinignal open source example at https://github.com/mrdoob/three
 </head>
 <body>
     <header>
-        <!-- <h1>Alexa Ann Bonomo</h1> -->
+        <h1>Alexa Ann <br> Bonomo</h1>
         <div id=name></div>
     </header> 
     <div id="info">
-        <a href="http://threejs.org" target="_blank" rel="noopener"></a><span id="birds"></span><br />
-       <span id="options"></span> <br />
+        <a href="http://threejs.org" target="_blank" rel="noopener"></a><span id="birds"></span>
+       <span id="options"></span>
     
     </div>
     <script src="libraries/three.js"></script> 
@@ -204,7 +204,7 @@ You can see the orinignal open source example at https://github.com/mrdoob/three
     			uniform vec3 color;
     			void main() {
     				// Fake colors for now
-    				float z2 = 1.0 + ( 1000. - z ) / 1000. * vColor.x;
+    				float z2 = 0.7 + ( 1000. - z ) / 1000. * vColor.x;
     				gl_FragColor = vec4( z2, z2, z2, 1. );
     			}
     		</script>
@@ -267,8 +267,8 @@ You can see the orinignal open source example at https://github.com/mrdoob/three
                 var x = (i % WIDTH) / WIDTH;
                 var y = ~ ~(i / WIDTH) / WIDTH;
                 var c = new THREE.Color(
-                    0xc4f2cc +
-                    ~ ~(v / 3) / BIRDS * 0xc4f2cc
+                    0x27878e +
+                    ~ ~(v / 3) / BIRDS * 0x27878e
                 );
                 birdColors.array[v * 3 + 0] = c.r;
                 birdColors.array[v * 3 + 1] = c.g;
@@ -277,7 +277,8 @@ You can see the orinignal open source example at https://github.com/mrdoob/three
                 references.array[v * 2 + 1] = y;
                 birdVertex.array[v] = v % 9;
             }
-            this.scale(0.1, 0.1, 0.1);
+            this.scale(0.3, 0.3, 0.3);
+    
         };
         THREE.BirdGeometry.prototype = Object.create(THREE.BufferGeometry.prototype);
         var container, stats;
@@ -311,7 +312,9 @@ You can see the orinignal open source example at https://github.com/mrdoob/three
             container = document.createElement('div');
             document.body.appendChild(container);
             camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 3000);
-            camera.position.z = 350;
+            camera.position.z = 600;
+            camera.position.y = -200;
+            camera.position.x = -0;
             scene = new THREE.Scene();
             // scene.background = new THREE.Color(0xffffff);
             // scene.fog = new THREE.Fog(0xffffff, 100, 1000);
@@ -386,9 +389,9 @@ You can see the orinignal open source example at https://github.com/mrdoob/three
                     gltf.scenes; // Array<THREE.Scene>
                     gltf.cameras; // Array<THREE.Camera>
                     gltf.asset; // Object
-                    gltf.scene.translateZ(335);
-                    gltf.scene.translateY(-7);
-                    gltf.scene.translateX(10);
+                    gltf.scene.translateZ(580);
+                    gltf.scene.translateY(-209);
+                    gltf.scene.translateX(11);
 
                 },
                 // called while loading is progressing
@@ -415,7 +418,7 @@ You can see the orinignal open source example at https://github.com/mrdoob/three
                         var material = new THREE.MeshPhongMaterial({ color: 0x666666, specular: 0x111111, shininess: 200 });
                         var mesh = new THREE.Mesh(object, material);
 
-                        mesh.position.set(300, -300, -300);
+                        mesh.position.set(300, -500, -200);
                         mesh.rotation.set(- Math.PI / 2, 0, 0);
                         mesh.scale.set(0.3, 0.3, 0.3);
 
@@ -443,6 +446,8 @@ You can see the orinignal open source example at https://github.com/mrdoob/three
 
                     }
                 );
+
+                
 
     renderer.gammaOutput = true;
     renderer.gammaFactor = 2.2;
@@ -507,9 +512,11 @@ You can see the orinignal open source example at https://github.com/mrdoob/three
         }
         function initBirds() {
             var geometry = new THREE.BirdGeometry();
+
+            
             // For Vertex and Fragment
             birdUniforms = {
-                color: { value: new THREE.Color(0x000000) },
+                color: { value: new THREE.Color(0x27878e) },
                 texturePosition: { value: null },
                 textureVelocity: { value: null },
                 time: { value: 1.0 },
@@ -527,6 +534,8 @@ You can see the orinignal open source example at https://github.com/mrdoob/three
             birdMesh.matrixAutoUpdate = false;
             birdMesh.updateMatrix();
             scene.add(birdMesh);
+
+            
         }
         function fillPositionTexture(texture) {
             var theArray = texture.image.data;
@@ -604,7 +613,7 @@ You can see the orinignal open source example at https://github.com/mrdoob/three
         }
     </script>
 
-    <script>
+    <!-- <script>
         var text = new Blotter.Text(" Alexa Ann Bonomo <br>", {
             family: 'Libre Baskerville', 
             size: 60,
@@ -625,7 +634,7 @@ You can see the orinignal open source example at https://github.com/mrdoob/three
         scope.appendTo(document.querySelector('#name'));
 
 
-    </script>
+    </script> -->
 
 
     <footer>
