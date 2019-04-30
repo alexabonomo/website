@@ -1,30 +1,21 @@
+@font-face {
+    font-family: Suisseintl-Light;
+    src: url(media/fonts/SuisseIntl-Light.otf);
+}
+
+@import url('https://fonts.googleapis.com/css?family=Libre+Baskerville');
+
 body {
-    font-family: 'Libre Baskerville', serif;
+    font-family: 'Suisseintl-Light', san serif;
       color: #333;
-      background: linear-gradient(-45deg, #d1e9fc, #e7dbfa,#fde6ef, #faf4d7 );
-	background-size: 400% 400%;
-	animation: Gradient 30s ease infinite;
 
 }
-@-webkit-keyframes Gradient {
-	0% {
-		background-position: 0% 50%
-	}
-	50% {
-		background-position: 100% 50%
-	}
-	100% {
-		background-position: 0% 50%
-	}
-}
 
-h1#name  {
-    font-weight: 200;
-    position: absolute;
-    left: 68%;
-    top: 400px;
+h1 {
     font-size: 24px;
-
+    font-weight: 200;
+    font-family: 'Libre Baskerville', serif;
+    padding-left: 40px;
 }
 
 canvas {
@@ -32,155 +23,62 @@ canvas {
     height: 100%;
 }
 
-header {
-    position: fixed;
-    text-decoration: none;
-    width: 100%;
-}
 
 ul {
     list-style-type: none;
 }
-footer {
+.navbar {
     width:100%;
-    height: 50px;
-    margin-top:50px;
-    /* background-color: #fff; */
-    position: fixed;
-    bottom: 0;
-}
-
-footer nav {
-    width: 100%;
 }
 
 a {
     text-decoration: none;
 }
 
-footer li {
-    float: left;
-    width: 20%;
-}
 
-footer li a {
+.navbar li a {
     font-size: 24px;
-    display: block;
     color: black;
-    text-align: center;
 }
 
 .about {
     top: 0px;
-    font-size: 46px;
-    width: 1500px;
-    display: inline-block;
-    grid-template-columns: auto auto;
-    padding-left: 90px;
-    padding-bottom: 150px;
+    font-size: 18px;
+    width: 1100px;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    padding-left: 115px;
 }
+
 
 div {
     display: block;
 }
-.milestones {
-    width: 1170px;
-    padding-right: 15px;
-    padding-left: 15px;
-    margin-right: auto;
-    margin-left: auto;
-}
 
-.milestones .row {
-    display: table;
-    width: 1170px;
-    margin-bottom: 30px;
-}
-
-.milestones .col {
-    width: 25%;
-    padding-right: 50px;
-    float: left;
-    position: relative;
-}
-
-.milestones h1 {
-    font-size: 46px;
-    font-weight: 300;
-}
-
-.milestones h3 {
-    font-size: 24px;
-    font-weight: 200;
-}
-
-.milestones h2 {
-    font-size: 14px;
-    font-weight: 400;
-}
-
-.resume {
-    width: 1170px;
-    padding-right: 15px;
-    padding-left: 15px;
-    margin-right: auto;
-    margin-left: auto;
-    margin-bottom: 75px;
-}
-.resume .row {
-    display: table;
-    width: 1170px;
-    margin-bottom: 30px; 
-}
-
-.resume .col {
-    width: 25%;
-    padding-right: 50px;
-    float: left;
-    position: relative;
-}
-
-.resume h1 {
-    font-size: 46px;
-    font-weight: 300;
-}
-
-.resume h3 {
-    font-size: 24px;
-    font-weight: 200;
-}
-
-.resume h2 {
-    font-size: 14px;
-    font-weight: 400;
+.about-section {
+    width:100%;
+    margin: auto;
 }
 
 #me {
-    width: 50%;
+    width: 578.33px;
     display: flex; 
-    padding:10em;
+    padding: 2em;
+    padding-left: 4em;
     text-decoration: none;
 }
-#me > .hi {
-  width: 20rem;
-  padding: 1em;
+#me > .cv {
+  width: 10rem;
   color: #333;
-  font-size: 48px;
-  padding-top: 5em;
-  margin-right: 2em;
+  font-size: 24px;
+  top:15em;
   
 }
 #me > .me-img { 
   flex: auto;
   padding-left:2em;
-  opacity:.75;
-  transition: opacity 2s;
 }
 
-img:hover{
-  opacity:1;
-  transition: opacity 2s;
-}
 
 #aboutText {
     width: 50%;
@@ -188,4 +86,12 @@ img:hover{
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+#contact-info {
+    font-size:80px;
+    font-weight: 400;
+    display: block;
+    margin: auto;
+    width:50%;
 }
