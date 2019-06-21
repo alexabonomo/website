@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://aframe.io/releases/0.5.0/aframe.min.js"></script>
+    <script src='//code.jquery.com/jquery-1.7.2.min.js'></script>
+    <script src='//localhost:3000/socket.io/socket.io.js'></script>
+    <script src="./js/index.js"></script>
+  </head>
+ <script>
+var incoming;
+
+ function map_range(value, low1, high1, low2, high2) {
+     return low2 + (high2 - low2) * (value - low1) / (high1 - low1);
+ }
+
+  var socket = io.connect('//localhost:3000');
+      socket.on('mysocket', function(data) {
+              // console.log(data);
+              // var res = data.split(",");
+              var res = data.replace("S", "");
+              //change range here
+              //incoming = res;
+              incoming = map_range(res,500,1000,0.0,1);
+
+          });
+ </script>
+  <body>
+    <a-scene>
+
+      <a-plane id="plane0" material-rgb-offset="texture:images/linemarching.jpg;offset:0;" position="-1000 0 -1500" rotation="0 0 0" width="600" height="464">
+      </a-plane>
+
+      <a-plane id="plane1" material-rgb-offset="texture:images/fire.jpg;offset:0;" position="0 0 -1500" rotation="0 0 0" width="600" height="464">
+      </a-plane>
+
+      <a-plane id="plane1" material-rgb-offset="texture:images/kite.jpg;offset:0;" position="1000 0 -1500" rotation="0 0 0" width="600" height="464">
+      </a-plane>
+
+      <a-plane id="plane1" material-rgb-offset="texture:images/luke.jpg;offset:0;" position="-1000 -1000 -1500" rotation="0 0 0" width="600" height="464">
+      </a-plane>
+
+      <a-plane id="plane1" material-rgb-offset="texture:images/flower.jpg;offset:0;" position="0 -1000 -1500" rotation="0 0 0" width="600" height="464">
+      </a-plane>
+
+      <a-plane id="plane1" material-rgb-offset="texture:images/slabcity.jpg;offset:0;" position="1000 -1000 -1500" rotation="0 0 0" width="600" height="464">
+      </a-plane>
+
+      <a-plane id="plane1" material-rgb-offset="texture:images/shadow.jpg;offset:0;" position="-1000 1000 -1500" rotation="0 0 0" width="600" height="464">
+      </a-plane>
+
+      <a-plane id="plane1" material-rgb-offset="texture:images/me.jpg;offset:0;" position="0 1000 -1500" rotation="0 0 0" width="600" height="464">
+      </a-plane>
+
+
+
+      <a-camera>
+  <a-cursor></a-cursor>
+</a-camera>
+
+    </a-scene>
+  </body>
+</html>
