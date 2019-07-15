@@ -1,0 +1,13 @@
+{
+    "emotion": {
+        "document": {
+            "emotion": {
+                "sadness": 0.144452,
+                "joy": 0.637863,
+                "fear": 0.135316,
+                "disgust": 0.051494,
+                "anger": 0.0713
+            }
+        }
+    }
+}

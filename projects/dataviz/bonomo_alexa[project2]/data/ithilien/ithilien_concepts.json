@@ -1,0 +1,44 @@
+{
+    "concepts": [
+        {
+            "text": "Plant morphology",
+            "relevance": 0.982016,
+            "dbpedia_resource": "http://dbpedia.org/resource/Plant_morphology"
+        },
+        {
+            "text": "minor species",
+            "relevance": 0.900118,
+            "dbpedia_resource": "http://dbpedia.org/resource/Flower"
+        },
+        {
+            "text":"Flower",
+            "relevance": 0.811603,
+            "dbpedia_resource": "http://dbpedia.org/resource/Pollen"
+        },
+        {
+            "text": "minor species",
+            "relevance": 0.795493,
+            "dbpedia_resource": "http://dbpedia.org/resource/Flowering_plant"
+        },
+        {
+            "text": "Leaf",
+            "relevance": 0.75331,
+            "dbpedia_resource": "http://dbpedia.org/resource/Leaf"
+        },
+        {
+            "text": "Mediterranean Basin",
+            "relevance": 0.7251,
+            "dbpedia_resource": "http://dbpedia.org/resource/Mediterranean_Basin"
+        },
+        {
+            "text": "Lamiaceae",
+            "relevance": 0.682073,
+            "dbpedia_resource": "http://dbpedia.org/resource/Lamiaceae"
+        },
+        {
+            "text": "History of the Mediterranean region",
+            "relevance": 0.663531,
+            "dbpedia_resource": "http://dbpedia.org/resource/History_of_the_Mediterranean_region"
+        }
+    ]
+}

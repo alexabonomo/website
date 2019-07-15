@@ -1,0 +1,934 @@
+{
+    "nodes": [
+        {
+            "id": "Plant morphology",
+            "group": 1
+        },
+        {
+            "id": "Flower",
+            "group": 1
+        },
+        {
+            "id": "Leaf",
+            "group": 1
+        },
+        {
+            "id": "Mediterranean Basin",
+            "group": 1
+        },
+        {
+            "id": "Lamiaceae",
+            "group": 1
+        },
+        {
+            "id": "History of the Mediterranean region",
+            "group": 1
+        },
+        {
+            "id": "Myrtus communis",
+            "group": 1
+        },
+        {
+            "id": "meadows of Ithilien",
+            "group": 1
+        },
+        {
+            "id": "minor species",
+            "group": 1
+        },
+        {
+            "id": "Various plant families",
+            "group": 1
+        },
+        {
+            "id": "linear leaves",
+            "group": 1
+        },
+        {
+            "id": "forest of resinous trees",
+            "group": 1
+        },
+        {
+            "id": "aromatic compounds",
+            "group": 1
+        },
+        {
+            "id": "characteristic species of this region",
+            "group": 1
+        },
+        {
+            "id": "southern Europe",
+            "group": 1
+        },
+ 
+        {
+            "id": "small trees",
+            "group": 1
+        },
+        {
+            "id": "showy lilylike flowers",
+            "group": 1
+        },
+
+        {
+            "id": "Sauron’s Black Gate",
+            "group": 1
+        },
+        {
+            "id": "species",
+            "group": 1
+        },
+        {
+            "id": "species of the genus Asphodelus",
+            "group": 1
+        },
+        {
+            "id": "fragrant flowers",
+            "group": 1
+        },
+        {
+            "id": "numerous fragrant shrubs",
+            "group": 1
+        },
+        {
+            "id": "opposite simple leaves",
+            "group": 1
+        },
+        {
+            "id": "common broom",
+            "group": 1
+        },
+        {
+            "id": "Central America",
+            "group": 1
+        },
+        {
+            "id": "southern Balkans",
+            "group": 1
+        },
+        {
+            "id": "air of Ithilien",
+            "group": 1
+        },
+        {
+            "id": "plants of Ithilien",
+            "group": 1
+        },
+        {
+            "id": "Origanum majorana",
+            "group": 1
+        },
+        {
+            "id": "upper lip",
+            "group": 1
+        },
+        {
+            "id": "northern South America",
+            "group": 1
+        },
+        {
+            "id": "brief descriptions",
+            "group": 1
+        },
+        {
+            "id": "Laurus nobilis",
+            "group": 1
+        },
+        {
+            "id": "bright yellow",
+            "group": 1
+        },
+        {
+            "id": "small alternate",
+            "group": 1
+        },
+        {
+            "id": "symmetrical flowers",
+            "group": 1
+        },
+        {
+            "id": "Cupressus sempervirens",
+            "group": 1
+        },
+        {
+            "id": "Buxus sempervirens",
+            "group": 1
+        },
+        {
+            "id": "single species",
+            "group": 1
+        },
+        {
+            "id": "superior ovary",
+            "group": 1
+        },
+        {
+            "id": "pinnate venation",
+            "group": 1
+        },
+        {
+            "id": "Noldor",
+            "group": 1
+        },
+        {
+            "id": "Two Trees of Valinor",
+            "group": 1
+        },
+        {
+            "id": "countless flowers",
+            "group": 1
+        },
+        {
+            "id": "Morgoth",
+            "group": 2
+        },
+        {
+            "id": "Silmaril",
+            "group": 2
+        },
+        {
+            "id": "Valinor",
+            "group": 2
+        },
+        {
+            "id": "Two Trees of Valinor",
+            "group": 2
+        },
+        {
+            "id": "The Silmarillion",
+            "group": 2
+        },
+        {
+            "id": "Ungoliant",
+            "group": 2
+        },
+        {
+            "id": "Middle-earth",
+            "group": 2
+        },
+        {
+            "id": "Two Trees of Valinor",
+            "group": 2
+        },
+        {
+            "id": "countless flowers",
+            "group": 2
+        },
+        {
+            "id": "dew of silver light",
+            "group": 2
+        },
+        {
+            "id": "blossom of that tree",
+            "group": 2
+        },
+        {
+            "id": "great light",
+            "group": 2
+        },
+        {
+            "id": "awakening of the Elves",
+            "group": 2
+        },
+        {
+            "id": "golden rain",
+            "group": 2
+        },
+        {
+            "id": "leaves of dark green",
+            "group": 2
+        },
+        {
+            "id": "clusters of yellow flame",
+            "group": 2
+        },
+        {
+            "id": "golden light of Laurelin",
+            "group": 2
+        },
+        {
+            "id": "Tolkien’s description",
+            "group": 2
+        },
+        {
+            "id": "light of Telperion",
+            "group": 2
+        },
+        {
+            "id": "species K",
+            "group": 2
+        },
+        {
+            "id": "clusters of yellow flowers of Laurelin",
+            "group": 2
+        },
+        {
+            "id": "detailed description of this tree",
+            "group": 2
+        },
+        {
+            "id": "white flowers of Telperion",
+            "group": 2
+        },
+        {
+            "id": "various White Trees of Gondor",
+            "group": 2
+        },
+        {
+            "id": "silver light",
+            "group": 2
+        },
+        {
+            "id": "Quenya name Telperion",
+            "group": 2
+        },
+        {
+            "id": "Telperion",
+            "group": 2
+        },
+        {
+            "id": "holy light",
+            "group": 2
+        },
+        {
+            "id": "form of the flowers",
+            "group": 2
+        },
+        {
+            "id": "hanging clusters of yellow flowers of Laurelin",
+            "group": 2
+        },
+        {
+            "id": "mythology of Middle",
+            "group": 2
+        },
+        {
+            "id": "sacred groves",
+            "group": 2
+        },
+        {
+            "id": "Egyptian mythology",
+            "group": 2
+        },
+        {
+            "id": "Fair Elves",
+            "group": 2
+        },
+        {
+            "id": "great knowledge",
+            "group": 2
+        },
+        {
+            "id": "light of the Trees",
+            "group": 2
+        },
+        {
+            "id": "latter half",
+            "group": 2
+        },
+        {
+            "id": "Queens of the Valar",
+            "group": 2
+        },
+        {
+            "id": "characteristic of the leaves of many species",
+            "group": 2
+        },
+        {
+            "id": "first humans",
+            "group": 2
+        },
+        {
+            "id": "splendor of the Trees",
+            "group": 2
+        },
+        {
+            "id": "Flowers",
+            "group": 2
+        },
+        {
+            "id": "single golden fruit",
+            "group": 2
+        },
+        {
+            "id": "image of Telperion",
+            "group": 2
+        },
+        {
+            "id": "inflorescences of Koelreuteria",
+            "group": 2
+        },
+        {
+            "id": "tales of the Elder Days",
+            "group": 2
+        },
+        {
+            "id": "shadows of his fluttering leaves",
+            "group": 2
+        },
+        {
+            "id": "Dark Elves",
+            "group": 2
+        },
+        {
+            "id": "Middle-earth",
+            "group": 3
+        },
+        {
+            "id": "The Lord of the Rings",
+            "group": 3
+        },
+        {
+            "id": "Sauron",
+            "group": 3
+        },
+        {
+            "id": "Agriculture",
+            "group": 3
+        },
+        {
+            "id": "Saruman",
+            "group": 3
+        },
+        {
+            "id": "Frodo Baggins",
+            "group": 3
+        },
+        {
+            "id": "Morgoth",
+            "group": 3
+        },
+        {
+            "id": "Valinor",
+            "group": 3
+        },
+        {
+            "id": "such vegetational changes",
+            "group": 3
+        },
+        {
+            "id": "plant communities",
+            "group": 3
+        },
+        {
+            "id": "conversion of the land",
+            "group": 3
+        },
+        {
+            "id": "major crops",
+            "group": 3
+        },
+        {
+            "id": "forces of Saruman",
+            "group": 3
+        },
+        {
+            "id": "agricultural activities of the elves of Mirkwood",
+            "group": 3
+        },
+        {
+            "id": "agricultural use",
+            "group": 3
+        },
+        {
+            "id": "major elven kingdoms of the First Age",
+            "group": 3
+        },
+        {
+            "id": "activities of humans",
+            "group": 3
+        },
+        {
+            "id": "garden vegetables",
+            "group": 3
+        },
+        {
+            "id": "forests of the Northern Hemisphere",
+            "group": 3
+        },
+        {
+            "id": "developed agriculture of Gondor",
+            "group": 3
+        },
+        {
+            "id": "Such ornamentals",
+            "group": 3
+        },
+        {
+            "id": "significant proportion of the land",
+            "group": 3
+        },
+        {
+            "id": "aesthetic qualities of the natural world",
+            "group": 3
+        },
+        {
+            "id": "silver light",
+            "group": 3
+        },
+        {
+            "id": "much lesser extent",
+            "group": 3
+        },
+        {
+            "id": "environmental destruction",
+            "group": 3
+        },
+        {
+            "id": "top level of Minas Tirith",
+            "group": 3
+        },
+        {
+            "id": "boughs of trees",
+            "group": 3
+        },
+        {
+            "id": "battle of Helm",
+            "group": 3
+        },
+        {
+            "id": "agricultural uses",
+            "group": 3
+        },
+        {
+            "id": "common plants of their flower gardens",
+            "group": 3
+        },
+        {
+            "id": "plant biomes",
+            "group": 3
+        },
+        {
+            "id": "vegetation of the Shire",
+            "group": 3
+        },
+        {
+            "id": "invention of hobbits",
+            "group": 3
+        },
+        {
+            "id": "Human activities",
+            "group": 3
+        },
+
+        {
+            "id": "Sam’s heart",
+            "group": 3
+        },
+        {
+            "id": "good agriculturalists",
+            "group": 3
+        },
+        {
+            "id": "ornamental plants",
+            "group": 3
+        },
+        {
+            "id": "fragrant trees of Eressëa",
+            "group": 3
+        }
+    ],
+    "links": [
+        {
+            "source": "Plant morphology",
+            "target": "Myrtus communis",
+            "sourceRelevance": 0.982016,
+            "targetRelevance": 0.607081,
+            "targetCount": 2
+        },
+        {
+            "source": "Plant morphology",
+            "target": "meadows of Ithilien",
+            "sourceRelevance": 0.982016,
+            "targetRelevance": 0.578467,
+            "targetCount": 1
+        },
+        {
+            "source": "Plant morphology",
+            "target": "upper lip",
+            "sourceRelevance": 0.982016,
+            "targetRelevance": 0.524412,
+            "targetCount": 2
+        },
+        {
+            "source": "Plant morphology",
+            "target": "minor species",
+            "sourceRelevance": 0.982016,
+            "targetRelevance": 0.576742,
+            "targetCount": 1
+        },
+        {
+            "source": "Plant morphology",
+            "target": "meadows of Ithilien",
+            "sourceRelevance": 0.982016,
+            "targetRelevance": 0.578467,
+            "targetCount": 1
+        },
+        {
+            "source": "minor species",
+            "target": "Buxus sempervirens",
+            "targetRelevance": 0.521581,
+            "targetCount": 2
+        },
+        {
+            "source": "Plant morphology",
+            "target": "superior ovary",
+            "sourceRelevance": 0.982016,
+            "targetRelevance": 0.519728,
+            "targetCount": 3
+        },
+        {
+            "source": "Plant morphology",
+            "target": "pinnate venation",
+            "sourceRelevance": 0.982016,
+            "targetRelevance": 0.519694,
+            "targetCount": 3
+        },
+        {
+            "source": "minor species",
+            "target": "Various plant families",
+            "targetRelevance": 0.56859,
+            "targetCount": 1
+        },
+        {
+            "source": "minor species",
+            "target": "Cupressus sempervirens",
+            "targetRelevance": 0.522121,
+            "targetCount": 2
+        },
+        {
+            "source": "Plant morphology",
+            "target": "meadows of Ithilien",
+            "sourceRelevance": 0.982016,
+            "targetRelevance": 0.578467,
+            "targetCount": 1
+        },
+        {
+            "source": "Leaf",
+            "target": "linear leaves",
+            "sourceRelevance": 0.75331,
+            "targetRelevance": 0.560751,
+            "targetCount": 1
+        },
+        {
+            "source": "Leaf",
+            "target": "opposite simple leaves",
+            "sourceRelevance": 0.75331,
+            "targetRelevance": 0.531804,
+            "targetCount": 1
+        },
+        {
+            "source": "Flower",
+            "target": "showy lilylike flowers",
+            "sourceRelevance": 0.900118,
+            "targetRelevance": 0.536133,
+            "targetCount": 1
+        },
+        {
+            "source": "Flower",
+            "target": "bright yellow",
+            "sourceRelevance": 0.900118,
+            "targetRelevance": 0.522744,
+            "targetCount": 1
+        },
+        {
+            "source": "Flower",
+            "target": "symmetrical flowers",
+            "sourceRelevance": 0.900118,
+            "targetRelevance": 0.522242,
+            "targetCount": 2
+        },
+        {
+            "source": "Mediterranean Basin",
+            "target": "forest of resinous trees",
+            "sourceRelevance": 0.7251,
+            "targetRelevance": 0.55568,
+            "targetCount": 1
+        },
+        {
+            "source": "Flower",
+            "target": "fragrant flowers",
+            "sourceRelevance": 0.900118,
+            "targetRelevance": 0.532814,
+            "targetCount": 1
+        },
+        {
+            "source": "History of the Mediterranean region",
+            "target": "southern Balkans",
+            "sourceRelevance": 0.663531,
+            "targetRelevance": 0.525659,
+            "targetCount": 1
+        },
+        {
+            "source": "History of the Mediterranean region",
+            "target": "aromatic compounds",
+            "sourceRelevance": 0.663531,
+            "targetRelevance": 0.547749,
+            "targetCount": 1
+        },
+        {
+            "source": "Lamiaceae",
+            "target": "air of Ithilien",
+            "sourceRelevance": 0.682073,
+            "targetRelevance": 0.525366,
+            "targetCount": 1
+        },
+        {
+            "source": "Morgoth",
+            "target": "countless flowers",
+            "sourceRelevance": 0.987743,
+            "targetRelevance": 0.665952,
+            "targetCount": 1
+        },
+        {
+            "source": "Silmaril",
+            "target": "dew of silver light",
+            "sourceRelevance": 0.872709,
+            "targetRelevance": 0.635989,
+            "targetCount": 1
+        },
+        {
+            "source": "Valinor",
+            "target": "blossom of that tree",
+            "sourceRelevance": 0.813428,
+            "targetRelevance": 0.584949,
+            "targetCount": 1
+        },
+        {
+            "source": "Valinor",
+            "target": "great light",
+            "sourceRelevance": 0.813428,
+            "targetRelevance": 0.56753,
+            "targetCount": 1
+        },
+        {
+            "source": "Valinor",
+            "target": "awakening of the Elves",
+            "sourceRelevance": 0.813428,
+            "targetRelevance": 0.54866,
+            "targetCount": 1
+        },
+        {
+            "source": "Valinor",
+            "target": "awakening of the Elves",
+            "sourceRelevance": 0.813428,
+            "targetRelevance": 0.54866,
+            "targetCount": 1
+        },
+        {
+            "source": "Two Trees of Valinor",
+            "target": "Queens of the Valar",
+            "sourceRelevance": 0.730105,
+            "targetRelevance": 0.52109,
+            "targetCount": 1
+        },
+        {
+            "source": "Two Trees of Valinor",
+            "target": "holy light",
+            "sourceRelevance": 0.730105,
+            "targetRelevance": 0.528246,
+            "targetCount": 3
+        },
+        {
+            "source": "The Silmarillion",
+            "target": "golden rain",
+            "sourceRelevance": 0.704619,
+            "targetRelevance": 0.547493,
+            "targetCount": 2
+        },
+        {
+            "source": "The Silmarillion",
+            "target": "single golden fruit",
+            "sourceRelevance": 0.704619,
+            "targetRelevance": 0.517739,
+            "targetCount": 1
+        },
+        {
+            "source": "The Silmarillion",
+            "target": "clusters of yellow flame",
+            "sourceRelevance": 0.704619,
+            "targetRelevance": 0.545555,
+            "targetCount": 1
+        },
+        {
+            "source": "The Silmarillion",
+            "target": "clusters of yellow flowers of Laurelin",
+            "sourceRelevance": 0.704619,
+            "targetRelevance": 0.532359,
+            "targetCount": 1
+        },
+        {
+            "source": "Ungoliant",
+            "target": "golden light of Laurelin",
+            "sourceRelevance": 0.629195,
+            "targetRelevance": 0.540353,
+            "targetCount": 1
+        },
+        {
+            "source": "Middle-earth",
+            "target": "detailed description of this tree",
+            "sourceRelevance": 0.581605,
+            "targetRelevance": 0.531659,
+            "targetCount": 1
+        },
+        {
+            "source": "Middle-earth",
+            "target": "Dark Elves",
+            "sourceRelevance": 0.581605,
+            "targetRelevance": 0.515661,
+            "targetCount": 2
+        },
+        {
+            "source": "Middle-earth",
+            "target": "Flowers",
+            "sourceRelevance": 0.581605,
+            "targetRelevance": 0.518412,
+            "targetCount": 4
+        },
+        {
+            "source": "Noldor",
+            "target": "air of Ithilien",
+            "sourceRelevance": 0.550335
+        },
+        {
+            "source": "Noldor",
+            "target": "Fair Elves",
+            "sourceRelevance": 0.550335,
+            "targetRelevance": 0.523009,
+            "targetCount": 1
+        },
+        {
+            "source": "Middle-earth",
+            "target": "such vegetational changes",
+            "sourceRelevance": 0.954622,
+            "targetRelevance": 0.5801,
+            "targetCount": 1
+        },
+        {
+            "source": "Middle-earth",
+            "target": "plant communities",
+            "sourceRelevance": 0.954622,
+            "targetRelevance": 0.569916,
+            "targetCount": 1
+        },
+        {
+            "source": "Middle-earth",
+            "target": "fragrant trees of Eressëa",
+            "sourceRelevance": 0.954622,
+            "targetRelevance": 0.518332,
+            "targetCount": 1
+        },
+        {
+            "source": "Middle-earth",
+            "target": "various White Trees of Gondor",
+            "sourceRelevance": 0.954622,
+            "targetRelevance": 0.517846,
+            "targetCount": 1
+        },
+        {
+            "source": "Middle-earth",
+            "target": "conversion of the land",
+            "sourceRelevance": 0.954622,
+            "targetRelevance": 0.554987,
+            "targetCount": 1
+        },
+        {
+            "source": "The Lord of the Rings",
+            "target": "countless flowers",
+            "sourceRelevance": 0.763984
+        },
+        {
+            "source": "Morgoth",
+            "target": "forces of Saruman",
+            "sourceRelevance": 0.494614,
+            "targetRelevance": 0.552219,
+            "targetCount": 1
+        },
+        {
+            "source": "Sauron",
+            "target": "countless flowers",
+            "sourceRelevance": 0.72092
+        },
+        {
+            "source": "Sauron",
+            "target": "major elven kingdoms of the First Age",
+            "sourceRelevance": 0.72092,
+            "targetRelevance": 0.540085,
+            "targetCount": 1
+        },
+        {
+            "source": "Morgoth",
+            "target": "countless flowers",
+            "sourceRelevance": 0.494614
+        },
+        {
+            "source": "Agriculture",
+            "target": "major crops",
+            "sourceRelevance": 0.652106,
+            "targetRelevance": 0.554955,
+            "targetCount": 1
+        },
+        {
+            "source": "Agriculture",
+            "target": "agricultural activities of the elves of Mirkwood",
+            "sourceRelevance": 0.652106,
+            "targetRelevance": 0.547512,
+            "targetCount": 1
+        },
+        {
+            "source": "Agriculture",
+            "target": "plant biomes",
+            "sourceRelevance": 0.652106,
+            "targetRelevance": 0.525215,
+            "targetCount": 1
+        },
+        {
+            "source": "Agriculture",
+            "target": "common plants of their flower gardens",
+            "sourceRelevance": 0.652106,
+            "targetRelevance": 0.526654,
+            "targetCount": 1
+        },
+        {
+            "source": "Morgoth",
+            "target": "countless flowers",
+            "sourceRelevance": 0.494614
+        },
+        {
+            "source": "Frodo Baggins",
+            "target": "good agriculturalists",
+            "sourceRelevance": 0.513523,
+            "targetRelevance": 0.522194,
+            "targetCount": 1
+        },
+        {
+            "source": "Frodo Baggins",
+            "target": "Sam’s heart",
+            "sourceRelevance": 0.513523,
+            "targetRelevance": 0.523473,
+            "targetCount": 1
+        },
+        {
+            "source": "Frodo Baggins",
+            "target": "vegetation of the Shire",
+            "sourceRelevance": 0.513523,
+            "targetRelevance": 0.524833,
+            "targetCount": 1
+        },
+        {
+            "source": "Frodo Baggins",
+            "target": "invention of hobbits",
+            "sourceRelevance": 0.513523,
+            "targetRelevance": 0.524591,
+            "targetCount": 1
+        },
+        {
+            "source": "Valinor",
+            "target": "Human activities",
+            "sourceRelevance": 0.440034,
+            "targetRelevance": 0.524379,
+            "targetCount": 1
+        }
+        
+    ]
+}

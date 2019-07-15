@@ -1,0 +1,54 @@
+brain storming process about visualizing text. A lot of questions. 
+
+Data Set: Flora of Middle Earth Field Guide 
+
+Thoughts that I need to clear up:
+
+.... Lord of the Rings? Is that too nerdy...
+
+I also have a copy of Werner's Nomenclature of Color which is a historical text that is also easily able to be translated into an csv file, but I can imagine the level of visualization that is required with Flora of Middle Earth
+
+
+
+I have been reading a lot about speculative design and there are many parallels to futurism and science fiction. Say I had a book that was a field guide to the fauna and flora of middle earth and I wanted the audience to able to catch how many times a certain plant appears in say rivendel... Is that possible?
+
+Natural Language Processing Technique
+
+Out of all of the options I found that https://github.com/spencermountain/compromise give the best options for parsing english langauge down to the grammar types. They also mention it's speed is amicable with small browsers. I am guessing this would be useful for future high graphics processing comes into play.
+
+
+So I am having a few questions. How can you easily take text from a book and convert into an csv? I have the digital file that looks easily applicable to entering into a form. 
+
+Interactions for Flora of Middle Earth 
+
+A node diagram of Plant types. A tree linking to their common and latin names and descriptions.
+When you click on a plant type, you can see how often the plant type is refered to in the text and in the movie ( http://www.ageofthering.com/atthemovies/)
+sort through all of the figures and images using similarity to the plant it's location.
+
+
+
+---------------------------------------------------------------------------------------------------------------------
+other option:
+---------------------------------------------------------------------------------------------------------------------
+
+
+Here is inormation from a fellow design grad I am considering collaborating with for this project. Can you provide feedback on this?
+
+Data Set: The text of each state's voter ID law (only 35 states have one)
+Goal: To use voter ID laws as a data set; to figure out how the laws can be modeled in relationship to factors such as state's overarching political party affiliations, etc...
+Chosen natural language processing techniques: 
+Hapax Richness
+TFIDF
+NGRAMS
+Briefly describe the views and interactions that your dashboard will contain:
+Would like to highlight similarities and differences between the text of the laws
+Would like to highlight complexity, repetition of the writing
+Would like to highlight differences in writing style
+Open to other ideas about what kinds of views and interactions would be interesting with this data set
+
+
+
+
+
+
+

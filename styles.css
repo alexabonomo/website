@@ -4,13 +4,10 @@
 }
 
 @import url('https://fonts.googleapis.com/css?family=Libre+Baskerville');
-
 body {
     font-family: 'Suisseintl-Light', san serif;
-      color: #333;
-
+    color: #333;
 }
-
 
 h1 {
     font-size: 24px;
@@ -19,23 +16,28 @@ h1 {
     padding-left: 40px;
 }
 
-canvas {
-    width:100%;
-    height: 100%;
+h2 {
+    font-size: 32px;
+    font-weight: 200;
+    font-family: 'Suisseintl-Light', san serif;
 }
 
+canvas {
+    width: 100%;
+    height: 100%;
+}
 
 ul {
     list-style-type: none;
 }
+
 .navbar {
-    width:100%;
+    width: 100%;
 }
 
 a {
     text-decoration: none;
 }
-
 
 .navbar li a {
     font-size: 24px;
@@ -51,35 +53,34 @@ a {
     padding-left: 115px;
 }
 
-
 div {
     display: block;
 }
 
 .about-section {
-    width:100%;
+    width: 100%;
     margin: auto;
 }
 
 #me {
     width: 578.33px;
-    display: flex; 
+    display: flex;
     padding: 2em;
     padding-left: 4em;
     text-decoration: none;
 }
-#me > .cv {
-  width: 10rem;
-  color: #333;
-  font-size: 24px;
-  top:15em;
-  
-}
-#me > .me-img { 
-  flex: auto;
-  padding-left:2em;
+
+#me>.cv {
+    width: 10rem;
+    color: #333;
+    font-size: 24px;
+    top: 15em;
 }
 
+#me>.me-img {
+    flex: auto;
+    padding-left: 2em;
+}
 
 #aboutText {
     width: 50%;
@@ -90,16 +91,16 @@ div {
 }
 
 #contact-info {
-    font-size:80px;
+    font-size: 80px;
     font-weight: 400;
     display: block;
     margin: auto;
-    width:50%;
+    width: 50%;
 }
 
 .content {
     width: 800px;
-    margin:auto;
+    margin: auto;
     display: block;
     text-align: justify;
     padding-top: 100px;
@@ -109,3 +110,76 @@ div {
     padding-left: 0px;
 }
 
+.demo-navbar nav {
+    text: white;
+    font-family: 'Suisseintl-Light', san serif;
+}
+
+.wrapper {
+    display: grid;
+    grid-template-columns: 500px 500px 500px;
+    grid-template-rows: 500px 500px;
+    grid-gap: 10px;
+    background-color: #000;
+    padding: 2em 0em 2em 0em;
+}
+
+.box {
+    margin: 1em;
+    border-color: #fff;
+    border-style: solid;
+    border-width: 1px;
+    padding: 20px;
+    font-size: 150%;
+}
+
+.a {
+    background-image: url("projects/media/auroraprint.jpg");
+    background-repeat: no-repeat;
+    background-position: right top;
+    background-size: 800px 500px;
+}
+
+.box a:link {
+    color: #fff;
+}
+
+.box a:visited {
+    color: #777;
+}
+
+.mfa {
+    height: 300px;
+}
+
+.mfa h2 {
+    text-align: center;
+}
+
+.code h2 {
+    text-align: center;
+}
+
+.projects {
+    background-color: #000;
+}
+
+.projects h2 {
+    font-size: 42px;
+    color: #fff;
+    padding: 1em 0em 0em 1em;
+}
+
+.creatures {
+    padding: 2em;
+    height: 1000px;
+}
+
+.creatures a:link {
+    color: #000;
+    padding: 2em;
+}
+
+.creatures a:visited {
+    color: #777;
+}

@@ -1,0 +1,98 @@
+{
+    "nodes": [
+        {
+            "id": "Plant morphology",
+            "group": 1
+        },
+        {
+            "id": "Flower",
+            "group": 1
+        },
+        {
+            "id": "Pollen",
+            "group": 1
+        },
+        {
+            "id": "Flowering plant",
+            "group": 1
+        },
+        {
+            "id": "Leaf",
+            "group": 1
+        },
+        {
+            "id": "Kingsfoil",
+            "group": 1
+        },
+        {
+            "id": "Mediterranean Basin",
+            "group":1
+        },
+        {
+            "id": "Lamiaceae",
+            "group": 1
+        },
+        {
+            "id": "History of the Mediterranean region",
+            "group": 1
+        },
+        {
+            "id": "Myrtus communis",
+            "group": 1
+        },
+        {
+            "id": "meadows of Ithilien",
+            "group": 1
+        },
+        {
+            "id": "minor species",
+            "group": 1
+        },
+        {
+            "id": "Various plant families",
+            "group": 1
+        },
+        {
+            "id": "characteristic species of this region",
+            "group": 1
+        },
+        {
+            "id": "forest of resinous trees",
+            "group": 1
+        }
+
+    ],
+    "links": [
+        {
+            "source": "Plant morphology",
+            "sourceRelevance": 0.982016,
+            "target": "Myrtus communis",
+            "targetRelevance": 0.607081,
+            "targetCount": 2
+        },
+        {
+            "source": "Plant morphology",
+            "target": "meadows of Ithilien",
+        },
+        {
+            "source": "Plant morphology",
+            "target": "minor species",
+            "value": 1
+        },
+        {
+            "source": "Plant morphology",
+            "target": "Various plant families",
+            "value": 2
+        },
+        {
+            "source": "Plant morphology",
+            "target": "characteristic species of this region",
+            "value": 1
+        },
+        {
+            "source": "Plant morphology",
+            "target": "forest of resinous trees",
+            "value": 1
+        }
+    ]
+}

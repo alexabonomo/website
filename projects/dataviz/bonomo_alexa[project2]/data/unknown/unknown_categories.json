@@ -1,0 +1,16 @@
+{
+    "categories": [
+        {
+            "score": 0.587061,
+            "label": "unrest and war"
+        },
+        {
+            "score": 0.562318,
+            "label": "entertainment"
+        },
+        {
+            "score": 0.553996,
+            "label": "romance"
+        }
+    ]
+}

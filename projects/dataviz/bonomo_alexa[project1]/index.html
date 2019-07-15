@@ -1,0 +1,778 @@
+<!-- based on paralell coordinates research project at https://syntagmatic.github.io/parallel-coordinates/ -->
+
+<!doctype html>
+<title>Pokemon Stats</title>
+<link rel="stylesheet" type="text/css" href="d3.parcoords.css">
+<script src="lib/d3.min.js"></script>
+<script src="lib/sylvester.js"></script>
+<script src="lib/slickgrid/jquery-1.7.min.js"></script>
+<script src="lib/underscore.js"></script>
+<script src="lib/underscore.math.js"></script>
+<script src="d3.parcoords.js"></script>
+<script src="lib/p5.js"></script>
+<script src="lib/p5.sound.js"></script>
+<script src="lib/p5.dom.js"></script>
+<link rel="stylesheet" type="text/css" href="style.css">
+<link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+
+
+<body>
+
+
+<script id="coloring-basic">var colors = d3.scale.category20b();
+
+// create a chart in every element with class "parcoords-coloring"
+d3.selectAll(".parcoords-coloring")
+  .each(function(d,i) {
+    var color = colors(i);
+
+    var chart = d3.parcoords()(this)
+      .data(data3.slice(7*i,7*i+30))
+      .alpha(0.6)
+      .color(color)
+      .margin({
+        top: 0,
+        left: 0,
+        bottom: 24,
+        right: 0
+      })
+      .render();
+
+    // color labels
+    var text = chart.svg.append("text")
+      .attr("x", 162)
+      .attr("y", 64)
+      .style({
+        "text-anchor": "end",
+        "font-weight": "bold",
+        "font-size": "11px",
+        "fill": "#ddd"
+      })
+      .text(colors(i))
+
+    // hover effect
+    d3.select(this).on({
+      "mouseover": function() { text.style("fill", "#222"); },
+      "mouseout": function() { text.style("fill", "#ddd"); }
+    })
+  });
+</script>
+
+<h2>Discover Pok&eacute;mon Type Trends by Manipulating Parallel Coordinates</h2>
+<p>To specify a range, click and drag down an axis</p>
+<div id="averages" class="parcoords" style="width:1230px;margin-left:-250px;height:270px;"></div>
+
+<h2>Small Mulitples of Each Pok&eacute;mon Type</h2>
+
+<section class = smallmult>
+  <h3>Dark</h3>
+  <div id="dark" class="parcoords" style="width:800px;margin-left:-250px;height:100px;"></div>
+  <h3>Fighting</h3>
+  <div id="fighting" class="parcoords" style="width:800px;margin-left:-250px;height:100px;"></div>
+  <h3>Fairy</h3>
+  <div id="fairy" class="parcoords" style="width:800px;margin-left:-250px;height:100px;"></div>
+  <h3>Dragon</h3>
+  <div id="dragon" class="parcoords" style="width:800px;margin-left:-250px;height:100px;"></div>
+  <h3>Ice</h3>
+  <div id="ice" class="parcoords" style="width:800px;margin-left:-250px;height:100px;"></div>
+  <h3>Psychic</h3>
+  <div id="psychic" class="parcoords" style="width:800px;margin-left:-250px;height:100px;"></div>
+  <h3>Electric</h3>
+  <div id="electric" class="parcoords" style="width:800px;margin-left:-250px;height:100px;"></div>
+  <h3>Grass</h3>
+  <div id="grass" class="parcoords" style="width:800px;margin-left:-250px;height:100px;"></div>
+  <h3>Flying</h3>
+  <div id="flying" class="parcoords" style="width:800px;margin-left:-250px;height:100px;"></div>
+  <h3>Fire</h3>
+  <div id="fire" class="parcoords" style="width:800px;margin-left:-250px;height:100px;"></div>
+  <h3>Steel</h3>
+  <div id="steel" class="parcoords" style="width:800px;margin-left:-250px;height:100px;"></div>
+  <h3>Ghost</h3>
+  <div id="ghost" class="parcoords" style="width:800px;margin-left:-250px;height:100px;"></div>
+  <h3>Bug</h3>
+  <div id="bug" class="parcoords" style="width:800px;margin-left:-250px;height:100px;"></div>
+  <h3>Rock</h3>
+  <div id="rock" class="parcoords" style="width:800px;margin-left:-250px;height:100px;"></div>
+  <h3>Ground</h3>
+  <div id="ground" class="parcoords" style="width:800px;margin-left:-250px;height:100px;"></div>
+  <h3>Poison</h3>
+  <div id="poison" class="parcoords" style="width:800px;margin-left:-250px;height:100px;"></div>
+  <h3>Normal</h3>
+  <div id="normal" class="parcoords" style="width:800px;margin-left:-250px;height:100px;"></div>
+  <h3>Water</h3>
+  <div id="water" class="parcoords" style="width:800px;margin-left:-250px;height:100px;"></div>
+
+  <div id="legendary" class="parcoords" style="width:800px;margin-left:-250px;height:100px;"></div>
+
+</section>
+
+<script id="progressive">// load csv file and create the chart
+d3.csv('data/passages_emotion.csv', function(data) {
+  var colorgen = d3.scale.ordinal()
+    .range(["#cacbab", '#cebafb"', '#cf88c9', '#efd99d', //[0]normal, [1]flying, [2] poison, [3]ground
+            "#d7c67e", '#c7d56b', '#c7d56b', '#d4d3e3',  //[4]rock, [5]bug, [6]ghost, [7]steel,
+            '#ffaf79', '#9fbcfb', '#a1e08d', '#fee171', //[8]fire [9]water, [10]grass, [11]electric,
+            '#ff94b8', '#b8e9e8', '#b083ff', '#fdbfcd',  //[12] psychic, [13]ice, [14]dragon, [15]fairy,
+            '#ac998f', '#9cc7bb']);//[16]dark, [17]legendary
+
+                        //Colors are based on the commonly used assignment of colors depending
+                        //the color of the type on a pokemon card. A user who has played the game
+                        //before should recognize this, making it easy to interact and sort through
+                        //each value. 
+
+                        //edit: the separation is not working and needs to be fixed
+
+  var color = function(d) { return colors(d.group); };
+
+  var averages = d3.parcoords()("#averages")
+    .data(data)
+    .hideAxis(["name"])
+    .color(colorgen)
+    .composite("darken")
+    .margin({ top: 24, left: 200, bottom: 12, right: 0 })
+    .mode("queue")
+    .render()
+    .brushMode("1D-axes");  // enable brushing
+    
+
+  averages.svg.selectAll("text")
+    .style("font", "10px sans-serif");
+});
+</script>
+<script>
+// Code viewer
+d3.selectAll(".show-code").on("click", function(d) {
+  var code = d3.select("#" + d3.select(this).attr("data-code")).text();
+  d3.select(this.parentNode)
+    .text(code)
+  event.preventDefault();
+})
+</script>
+
+
+<!-- DARK -->
+
+<script id="dark_smallmultiple">// load csv file and create the chart
+d3.csv('data/dark.csv', function(data) {
+
+
+  var dark = d3.parcoords()("#dark")
+    .data(data)
+    .color('#ac998f')
+    .composite("darken")
+    .margin({ top: 24, left: 200, bottom: 12, right: 0 })
+    .mode("queue")
+    .render()
+    .brushMode("1D-axes"); // enable brushing
+    
+
+  dark.svg.selectAll("text")
+    .style("font", "2px sans-serif");
+
+    //add mouseover event to enlarge format
+    
+
+    d3.select("#dark")
+      .append("svg")
+      .attr("width", 100)
+      .attr("height", 33)
+
+
+});
+</script>
+<script>
+// Code viewer
+d3.selectAll(".show-code").on("click", function(d) {
+  var code = d3.select("#" + d3.select(this).attr("data-code")).text();
+  d3.select(this.parentNode)
+    .text(code)
+  event.preventDefault();
+})
+</script>
+
+<!-- Fighting -->
+
+<script id="fighting_smallmultiple">// load csv file and create the chart
+  d3.csv('data/fighting.csv', function (data) {
+
+    var fighting = d3.parcoords()("#fighting")
+      .data(data)
+      .color('#e57c7b')
+      .composite("darken")
+      .margin({ top: 24, left: 200, bottom: 12, right: 0 })
+      .mode("queue")
+      .render()
+      .brushMode("1D-axes"); // enable brushing
+
+
+    fighting.svg.selectAll("text")
+       .style("font", "2px sans-serif");
+
+    d3.select("#fighting")
+      .append("svg")
+      .attr("width", 100)
+      .attr("height", 33)
+
+  });
+</script>
+<script>
+  // Code viewer
+  d3.selectAll(".show-code").on("click", function (d) {
+    var code = d3.select("#" + d3.select(this).attr("data-code")).text();
+    d3.select(this.parentNode)
+      .text(code)
+    event.preventDefault();
+  })
+</script>
+
+<!-- Fairy -->
+
+<script id="fairy_smallmultiple">// load csv file and create the chart
+  d3.csv('data/fairy.csv', function (data) {;
+    var fairy = d3.parcoords()("#fairy")
+      .data(data)
+      .color('#fdbfcd')
+      .composite("darken")
+      .margin({ top: 24, left: 200, bottom: 12, right: 0 })
+      .mode("queue")
+      .render()
+      .brushMode("1D-axes"); // enable brushing
+
+
+    fairy.svg.selectAll("text")
+      .style("font", "2px sans-serif");
+
+    d3.select("#fairy")
+      .append("svg")
+      .attr("width", 100)
+      .attr("height", 33)
+
+  });
+</script>
+
+<!-- dragon -->
+
+<script id="dragon_smallmultiple">// load csv file and create the chart
+  d3.csv('data/dragon.csv', function (data) {
+    var color = function (d) { return colors(d.group); };
+
+    var dragon = d3.parcoords()("#dragon")
+      .data(data)
+      .color('#b083ff')
+      .composite("darken")
+      .margin({ top: 24, left: 200, bottom: 12, right: 0 })
+      .mode("queue")
+      .render()
+      .brushMode("1D-axes"); // enable brushing
+
+
+    dragon.svg.selectAll("text")
+      .style("font", "2px sans-serif");
+
+    d3.select("#dragon")
+      .append("svg")
+      .attr("width", 100)
+      .attr("height", 33)
+
+  });
+</script>
+
+
+<!-- ice -->
+
+<script id="ice_smallmultiple">// load csv file and create the chart
+  d3.csv('data/ice.csv', function (data) {
+    var color = function (d) { return colors(d.group); };
+
+    var ice = d3.parcoords()("#ice")
+      .data(data)
+      .color('#b8e9e8')
+      .composite("darken")
+      .margin({ top: 24, left: 200, bottom: 12, right: 0 })
+      .mode("queue")
+      .render()
+      .brushMode("1D-axes"); // enable brushing
+
+
+    ice.svg.selectAll("text")
+      .style("font", "2px sans-serif");
+
+    d3.select("#ice")
+      .append("svg")
+      .attr("width", 100)
+      .attr("height", 33)
+
+  });
+</script>
+
+
+
+<!-- psychic -->
+
+<script id="psychic_smallmultiple">// load csv file and create the chart
+  d3.csv('data/psychic.csv', function (data) {
+    var psychic = d3.parcoords()("#psychic")
+      .data(data)
+      .color('#ff94b8')
+      .composite("darken")
+      .margin({ top: 24, left: 200, bottom: 12, right: 0 })
+      .mode("queue")
+      .render()
+      .brushMode("1D-axes"); // enable brushing
+
+
+    psychic.svg.selectAll("text")
+      .style("font", "2px sans-serif");
+
+    d3.select("#psychic")
+      .append("svg")
+      .attr("width", 100)
+      .attr("height", 33)
+
+  });
+</script>
+
+
+<!-- electric -->
+
+<script id="electric_smallmultiple">// load csv file and create the chart
+  d3.csv('data/electric.csv', function (data) {
+    var color = function (d) { return colors(d.group); };
+
+    var electric = d3.parcoords()("#electric")
+      .data(data)
+      .color('#fee171')
+      .composite("darken")
+      .margin({ top: 24, left: 200, bottom: 12, right: 0 })
+      .mode("queue")
+      .render()
+      .brushMode("1D-axes"); // enable brushing
+
+
+    electric.svg.selectAll("text")
+      .style("font", "2px sans-serif");
+
+    d3.select("#electric")
+      .append("svg")
+      .attr("width", 100)
+      .attr("height", 33)
+
+  });
+</script>
+
+
+<!-- grass -->
+
+<script id="grass_smallmultiple">// load csv file and create the chart
+  d3.csv('data/grass.csv', function (data) {
+    var electric = d3.parcoords()("#grass")
+      .data(data)
+      .color('#a1e08d')
+      .composite("darken")
+      .margin({ top: 24, left: 200, bottom: 12, right: 0 })
+      .mode("queue")
+      .render()
+      .brushMode("1D-axes"); // enable brushing
+
+
+    electric.svg.selectAll("text")
+      .style("font", "2px sans-serif");
+
+    d3.select("#grass")
+      .append("svg")
+      .attr("width", 100)
+      .attr("height", 33)
+
+  });
+</script>
+
+
+<!-- flying -->
+
+<script id="flying_smallmultiple">// load csv file and create the chart
+  d3.csv('data/flying.csv', function (data) {
+    var color = function (d) { return colors(d.group); };
+
+    var flying = d3.parcoords()("#flying")
+      .data(data)
+      .color('#cebafb')
+      .composite("darken")
+      .margin({ top: 24, left: 200, bottom: 12, right: 0 })
+      .mode("queue")
+      .render()
+      .brushMode("1D-axes"); // enable brushing
+
+
+    flying.svg.selectAll("text")
+      .style("font", "2px sans-serif");
+
+    d3.select("#flying")
+      .append("svg")
+      .attr("width", 100)
+      .attr("height", 33)
+
+  });
+</script>
+
+
+<!-- fire -->
+
+<script id="fire_smallmultiple">// load csv file and create the chart
+  d3.csv('data/fire.csv', function (data) {
+    var fire = function (d) { return colors(d.group); };
+
+    var fire = d3.parcoords()("#fire")
+      .data(data)
+      .color('#ffaf79')
+      .composite("darken")
+      .margin({ top: 24, left: 200, bottom: 12, right: 0 })
+      .mode("queue")
+      .render()
+      .brushMode("1D-axes"); // enable brushing
+
+
+    fire.svg.selectAll("text")
+      .style("font", "2px sans-serif");
+
+    d3.select("#fire")
+      .append("svg")
+      .attr("width", 100)
+      .attr("height", 33)
+
+  });
+</script>
+
+<!-- steel-->
+
+<script id="steel_smallmultiple">// load csv file and create the chart
+  d3.csv('data/steel.csv', function (data) {
+    var steel = d3.parcoords()("#steel")
+      .data(data)
+      .color('#d4d3e3')
+      .composite("darken")
+      .margin({ top: 24, left: 200, bottom: 12, right: 0 })
+      .mode("queue")
+      .render()
+      .brushMode("1D-axes"); // enable brushing
+
+
+    steel.svg.selectAll("text")
+      .style("font", "2px sans-serif");
+
+    d3.select("#steel")
+      .append("svg")
+      .attr("width", 100)
+      .attr("height", 33)
+
+  });
+</script>
+
+
+<!-- ghost -->
+
+<script id="ghost_smallmultiple">// load csv file and create the chart
+  d3.csv('data/ghost.csv', function (data) {
+
+    var ghost = d3.parcoords()("#ghost")
+      .data(data)
+      .color('#ac99c4')
+      .composite("darken")
+      .margin({ top: 24, left: 200, bottom: 12, right: 0 })
+      .mode("queue")
+      .render()
+      .brushMode("1D-axes"); // enable brushing
+
+
+    ghost.svg.selectAll("text")
+      .style("font", "2px sans-serif");
+
+    d3.select("#ghost")
+      .append("svg")
+      .attr("width", 100)
+      .attr("height", 33)
+
+  });
+</script>
+
+
+<!-- bug -->
+
+<script id="bug_smallmultiple">// load csv file and create the chart
+  d3.csv('data/bug.csv', function (data) {
+    var bug = d3.parcoords()("#bug")
+      .data(data)
+      .color('#c7d56b')
+      .composite("darken")
+      .margin({ top: 24, left: 200, bottom: 12, right: 0 })
+      .mode("queue")
+      .render()
+      .brushMode("1D-axes"); // enable brushing
+
+
+    bug.svg.selectAll("text")
+      .style("font", "2px sans-serif");
+
+    d3.select("#bug")
+      .append("svg")
+      .attr("width", 100)
+      .attr("height", 33)
+
+  });
+</script>
+
+
+<!-- rock-->
+
+<script id="rock_smallmultiple">// load csv file and create the chart
+  d3.csv('data/rock.csv', function (data) {
+    var rock = d3.parcoords()("#rock")
+      .data(data)
+      .color('#d7c67e')
+      .composite("darken")
+      .margin({ top: 24, left: 200, bottom: 12, right: 0 })
+      .mode("queue")
+      .render()
+      .brushMode("1D-axes"); // enable brushing
+
+
+    rock.svg.selectAll("text")
+      .style("font", "2px sans-serif");
+
+    d3.select("#rock")
+      .append("svg")
+      .attr("width", 100)
+      .attr("height", 33)
+
+  });
+</script>
+
+
+<!-- ground -->
+
+<script id="ground_smallmultiple">// load csv file and create the chart
+  d3.csv('data/ground.csv', function (data) {
+    var ground = d3.parcoords()("#ground")
+      .data(data)
+      .color('#d7c67e')
+      .composite("darken")
+      .margin({ top: 24, left: 200, bottom: 12, right: 0 })
+      .mode("queue")
+      .render()
+      .brushMode("1D-axes"); // enable brushing
+
+
+    ground.svg.selectAll("text")
+      .style("font", "2px sans-serif");
+
+    d3.select("#ground")
+      .append("svg")
+      .attr("width", 100)
+      .attr("height", 33)
+
+  });
+</script>
+
+<!-- poison -->
+
+<script id="poison_smallmultiple">// load csv file and create the chart
+  d3.csv('data/poison.csv', function (data) {
+    var poison = d3.parcoords()("#poison")
+      .data(data)
+      .color('#cf88c9')
+      .composite("darken")
+      .margin({ top: 24, left: 200, bottom: 12, right: 0 })
+      .mode("queue")
+      .render()
+      .brushMode("1D-axes"); // enable brushing
+
+
+    poison.svg.selectAll("text")
+      .style("font", "2px sans-serif");
+
+    d3.select("#poison")
+      .append("svg")
+      .attr("width", 100)
+      .attr("height", 33)
+
+  });
+</script>
+
+
+<!-- normal -->
+
+<script id="normal_smallmultiple">// load csv file and create the chart
+  d3.csv('data/normal.csv', function (data) {
+    var colorgen = d3.scale.ordinal()
+
+    var normal = d3.parcoords()("#normal")
+      .data(data)
+      .color('#cacbab')
+      .composite("darken")
+      .margin({ top: 24, left: 200, bottom: 12, right: 0 })
+      .mode("queue")
+      .render()
+      .brushMode("1D-axes"); // enable brushing
+
+
+    normal.svg.selectAll("text")
+      .style("font", "2px sans-serif");
+
+    d3.select("#normal")
+      .append("svg")
+      .attr("width", 100)
+      .attr("height", 33)
+
+  });
+</script>
+
+
+<!-- water -->
+
+<script id="water_smallmultiple">// load csv file and create the chart
+  d3.csv('data/water.csv', function (data) {
+    var water = function (d) { return colors(d.group); };
+
+    var water = d3.parcoords()("#water")
+      .data(data)
+      .color('#9fbcfb')
+      .composite("darken")
+      .margin({ top: 24, left: 200, bottom: 12, right: 0 })
+      .mode("queue")
+      .render()
+      .brushMode("1D-axes"); // enable brushing
+
+
+    water.svg.selectAll("text")
+      .style("font", "2px sans-serif");
+
+    d3.select("#waterl")
+      .append("svg")
+      .attr("width", 100)
+      .attr("height", 33)
+
+  });
+</script>
+
+<h2>Choose Your Starter Pok&eacute;mon</h2>
+
+<script>
+    var Bulbasaur;
+    var Charmander;
+    var Squirtle;
+    var fft;
+    var button;
+
+    function toggleBulbasaur() {
+      if (Bulbasaur.isPlaying()) {
+        Bulbasaur.pause();
+      } else {
+        Bulbasaur.play();
+      }
+    }
+
+    function toggleCharmander() {
+        if (Charmander.isPlaying()) {
+          Charmander.pause();
+        } else {
+          Charmander.play();
+        }
+      }
+
+       function toggleSquirtle() {
+          if (Squirtle.isPlaying()) {
+            Squirtle.pause();
+          } else {
+            Squirtle.play();
+          }
+        }
+
+    function preload() {
+      Bulbasaur = loadSound('pokemon_sounds/001 - Bulbasaur.wav');
+      Charmander = loadSound('pokemon_sounds/004 - Charmander.wav');
+      Squirtle = loadSound('pokemon_sounds/007 - Squirtle.wav');
+
+
+    }
+
+    function setup() {
+      createCanvas(1000, 500);
+      colorMode(HSB);
+      angleMode(DEGREES);
+      buttonBulbasaur = createButton('bulbasaur');
+      buttonCharmander = createButton('charmander');
+      buttonSquirtle = createButton('squirtle');
+      buttonBulbasaur.mousePressed(toggleBulbasaur);
+      buttonCharmander.mousePressed(toggleCharmander);
+      buttonSquirtle.mousePressed(toggleSquirtle);
+      Bulbasaur.play();
+      Charmander.play();
+      Squirtle.play();
+      fft = new p5.FFT(0.9, 128);
+    }
+
+    function draw() {
+      background(255);
+      var spectrum = fft.analyze();
+      //console.log(spectrum);
+      stroke(255);
+      noStroke();
+      translate(width / 2, height / 2);
+      //beginShape();
+      for (var i = 0; i < spectrum.length; i++) {
+        var angle = map(i, 0, spectrum.length, 0,360);
+        var amp = spectrum[i];
+        var r = map(amp, 0, 256, 20, 250);
+        fill(0);
+        var x = r * cos(angle);
+        var y = r * sin(angle);
+        stroke(0);
+        line(0, 0, x, y);
+      }
+    }
+</script>
+
+
+<script>
+  // Code viewer
+  d3.selectAll(".show-code").on("click", function (d) {
+    var code = d3.select("#" + d3.select(this).attr("data-code")).text();
+    d3.select(this.parentNode)
+      .text(code)
+    event.preventDefault();
+  })
+</script>
+
+
+
+<script>
+  document.querySelector("form").addEventListener("submit", processForm);
+    document.querySelector('#reset').addEventListener('click', resetForm);
+    document.querySelector("form").addEventListener("", processTypeForm);
+
+    function processForm(evt) {
+      var pokemonName = document.querySelector('#pokemonName').value;
+
+      var outputMsg = document.querySelector('#outputMsg');
+
+      outputMsg.innerHTML = 'you caught ' + pokemonName + '!';
+
+      evt.preventDefault();
+    }
+
+    function processTypeForm(evt) {
+      var pokemonType = document.querySelector('#pokemonType').value;
+
+      var outputMsg = document.querySelector('#outputMsg');
+
+      outputMsg.innerHTML = 'here are the stats for' + pokemonType + '!';
+
+      evt.preventDefault();
+    }
+
+    function resetForm() {
+      outputMsg.innerHTML = 'Type in a pokemon to catch them!';
+      return false;
+    }
+
+</script>
+</body>
