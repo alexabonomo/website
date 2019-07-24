@@ -18,16 +18,36 @@ You can see the orinignal open source example at https://github.com/mrdoob/three
 <body>
 
     <section class="navbar">
-        <h1>alexa ann bonomo</h1>
-        <nav>
+        <a href="index.html"><h1>alexa ann bonomo</h1></a>
+        <nav role="navigation">
+            <div id="menuToggle">
+                <input type="checkbox"/>
+
+                <span></span>
+                <span></span>
+                <span></span>
+
+                <ul id="menu">
+
+                    <a href="demos.html"><li>work</li></a>
+                    <a href="about.html"><li>about</li></a>
+                    <a href="contact.html"><li>contact</li></a>
+                    
+                </ul>
+            </div>
+        </nav>
+
+
+        <!-- <nav>
             <ul>
                 <li><a href="index.html">home</a></li>
                 <li><a href="about.html">about</a></li>
                 <li><a href="contact.html">contact</a></li>
                 <li><a href="demos.html">work</a></li>
             </ul>
-        </nav>
+        </nav> -->
     </section>
+    <div id="intro"></div>
     <div id="info">
         <a href="http://threejs.org" target="_blank" rel="noopener"></a><span id="birds"></span>
        <span id="options"></span>
@@ -530,28 +550,24 @@ You can see the orinignal open source example at https://github.com/mrdoob/three
         }
     </script>
 
-    <!-- <script>
-        var text = new Blotter.Text(" Alexa Ann Bonomo <br>", {
+    <script>
+        var text = new Blotter.Text(" Welcome.", {
             family: 'Libre Baskerville', 
             size: 60,
-            fill: "#171717"
+            fill: "#000000"
         })
 
-        var material = new Blotter.LiquidDistortMaterial();
-        var blotter = new Blotter(material, { texts: text });
+        var material = new Blotter.RollingDistortMaterial();
+
+
+        var blotter = new Blotter(material, { 
+            texts: text 
+        });
+        var elem = document.getElementById("intro");
         var scope = blotter.forText(text);
-        
-        material.uniforms.uSpeed.value = 0.5;
-        material.uniforms.uVolatility.value = 0.01;
-
-        
 
 
-
-        scope.appendTo(document.querySelector('#name'));
-
-
-    </script> -->
+    </script>
 
 
 

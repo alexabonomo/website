@@ -12,14 +12,23 @@
 
 <body>
     <section class=navbar>
-        <h1>alexa ann bonomo</h1>
-        <nav>
-            <ul>
-                <li><a href="index.html">home</a></li>
-                <li><a href="about.html">about</a></li>
-                <li><a href="contact.html">contact</a></li>
-                <li><a href="demos.html">work</a></li>
-            </ul>
+        <a href="index.html"><h1>alexa ann bonomo</h1></a>
+        <nav role="navigation">
+            <div id="menuToggle">
+                <input type="checkbox"/>
+
+                <span></span>
+                <span></span>
+                <span></span>
+
+                <ul id="menu">
+                    
+                    <a href="demos.html"><li>work</li></a>
+                    <a href="about.html"><li>about</li></a>
+                    <a href="contact.html"><li>contact</li></a>
+                    
+                </ul>
+            </div>
         </nav>
     </section>
     <section class="container mfa">
@@ -37,11 +46,11 @@
     <section class="container projects">
         <h2>previous projects</h2>
         <div class="wrapper">
-            <div class="box a"><a href="projects/auroraprint.html">aurora print</a></div>
-            <div class="box b"><a href="projects/pitterpatter.html">pitter patter</a></div>
-            <div class="box c"><a href="projects/sense.html">sense</a></div>
-            <div class="box d"><a href="projects/theoryofmind.html">theory of mind prism</a></div>
-            <div class="box e"><a href="projects/theoryofmind.html">dataviz</a></div>
+            <div class="box left"><a href="projects/theoryofmind.html">theory of mind prism</a></div>
+            <div class="box right"><a href="projects/pitterpatter.html">pitter patter</a></div>
+            <div class="box left"><a href="projects/sense.html">sense</a></div>
+            <div class="box right"><a href="projects/auroraprint.html">aurora print</a></div>
+            
         </div>
     </section>
 

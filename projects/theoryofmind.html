@@ -11,14 +11,30 @@
 </head>
 
 <body>
+    <section class="content title">
+        <h1>Theory of Mind Prism</h1>
+    </section>
+    <div id="prism-content">
+        <div id="prism-vid-1">
+            <img id="img-float-left" src="media/theoryofmind/IMG_0773.gif" width="40%" height="40%">
+            <p class="project-subtitles">Individual interaction of a user recognizing prismatic lines following hand.</p>
+        </div>
+        <div id="prism-vid-2">
+            <img id="img-float-right" src="media/theoryofmind/IMG_0763.gif" width="40%" height="40%">
+            <p class="project-subtitles">Lines connect two users within a certain range of distance.</p>
+        </div>
+    </div>
     <section class="content">
-        <img href=''>
         <h1>Inspiration</h1>
-        <p>Neural networks, emotion and behavior became a determining factor of interest for UC Davis' Annual Community Book Project centered around the idea of Joy. Theory of mind is the human phenomena that allows us to detect one another’s emotions.
+        <p>Networks, emotion and behavior became a determining factor of interest for UC Davis' Annual Community Book Project centered around the idea of Joy. Theory of mind is the human phenomena that allows us to detect one another’s emotions.
         People were able to move around freely and watch trails of lines connect to nearby beings. Slowly the colors would layer on top of eachother and morph into new colors. Euclidian relationships acted as an abstract analogy to the social relationships we form</p>
+        <img src="media/theoryofmind/blobtrackingwithpersistance.gif" width="100%" height="100%">
+        <p class="project-subtitles">First acccomplished hard coded blob detection with persistance process shot. Followed Daniel Shiffman's tutorial and integrsated it with my own design. Counts current blobs in the space and deletes blobs when they disappear.</p>
         <h1>Implementation</h1>
         <p> Processing drew on to a canvas using spatial input from a kinect ir sensor. Within processing, the ir sensor took a bitmapped grid of pixels, mapped a retangle around the max distances on the x and y axis and calculated the center to draw a point, thus forming lines segments from one vector to the next. The bit map mirroring a person showed up as grey and the lines were colored by a spectrum class that preformed a function to iterate over the hsb spectrum. This resulted in trails of prismatic connections.  For more implementation visit <link href="#">
         </p>
+        <img src="media/theoryofmind/omgcolor.gif" width="100%" height="100%">
+        <p class="project-subtitles">Process shot of prismatic color algorithm following to separate "blobs" at the same time.</p>
         <h1>Futures</h1>
         <p>The ideology of mapping has influenced emerging technology that we use every day. There are syneasthetic qualities in most of our everyday activity then mapped to a value of information. But the meaningfullness behind this is that this influences perceptual influences on anthropology and our ecological environment. </p>
     </section>
