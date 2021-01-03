@@ -6,6 +6,7 @@
         <title></title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata">
         <link rel="stylesheet" href="../styles.css">
     </head>
@@ -13,28 +14,122 @@
         <main class="wrapper">
             <div id="nav">
                 <h1><a href="../index.html">Home</a></h1>
-                <h1><a href="../prompts/0-01-2021.html"><</a> 01/01/2021 <a href="../prompts/0-03-2021.html">></a></h1>
+                <h1><a href="../prompts/0-01-2021.html"><</a> 01/02/2021 <a href="../prompts/0-03-2021.html">></a></h1>
             </div>
             <div id="sketch"></div>
         </main>        
         <script src="https://cdn.jsdelivr.net/npm/p5@1.2.0/lib/p5.js"></script>
+        <script src="../library/p5-global-effects.min.js"></script>
         <script>
             let img;
+
+            const rule30 = (pattern) => {
+                let state;
+                if(pattern == '111') state = 0;
+                if(pattern == '110') state = 0;
+                if(pattern == '101') state = 0;
+                if(pattern == '100') state = 1;
+                if(pattern == '011') state = 1;
+                if(pattern == '010') state = 1;
+                if(pattern == '001') state = 1;
+                if(pattern == '000') state = 0;
+                return state;
+            }
+
+            const generate = (density) => {
+                const states = [];
+                for (let i = 0; i < density; i += 1)
+                    states[i] = random(0,1) > 0.85 ? 0 : 1;
+                return states;
+            }
+
+            const updateStates = (density, states) => {
+                for(let i=0; i < density - 2; i++) {
+                    const left = states[i];
+                    const current = states[i + 1];
+                    const right = states[i + 2];
+                    const pattern = str(left) + str(current) + str(right);
+                    states[i] = rule30(pattern);
+                }
+                const left = states[0];
+                const current = states[states.length - 1];
+                const right = states[states.length - 2];
+                const pattern = str(left) + str(current) + str(right);
+                states[states.length - 1] = rule30(pattern);
+            }
 
             function setup(){
                 let desktopWidth = windowWidth/1.5;
                 let mobileWidth = windowWidth;
-                let cnv = createCanvas(desktopWidth, 700);
+                let cnv = createCanvas(desktopWidth, 700, WEBGL);
                 if (windowWidth < 600){
-                    let cnv = createCanvas(mobileWidth, 400);
+                    let cnv = createCanvas(mobileWidth, 400, WEBGL);
                 }
                 cnv.parent('sketch');
-                
-            }
-            function draw(){
                 background(0);
+                noStroke();
+
+                // const density = floor(random(20,60));
+                // const cells = generate(density);
+                // const padding = 80;
+                // const halfWidth = width * 0.5 - padding;
+                // const scaler = width - padding * 2
+                // const cell = scaler / density;
+                // const effects = new Effects(this);
+                // const bright = effects.colors.bright();
+                // const grain = effects.hatches.stripes(cell, cell, 0.14, bright, 1);
+
+                // for ( let j = 0; j < scaler; j += cell) {
+                //     updateStates(density, cells);
+
+                //     for (let i = 0; i < density; i++) {
+                //         const x = i * cell + cell * 0.5 - halfWidth;
+                //         const y = j + cell * 0.5 - halfWidth;
+                //         const noiseScl = 0.01;
+                //         const noiseMult = 80;
+                //         const flow = noise(x * noiseScl, y * noiseScl);
+                //         const tex = effects.hatches.stripes(cell, cell, 0.02, bright, 1);
+                //         texture(grain);
+                //         push();
+                //         translate(x, y, 0);
+                //         if (cells[i] == 1) box(cell, cell, cell +noiseMult * flow);
+                //         else image(tex, 0, 0);
+                //         pop();
+                //     }
+                // }             
             }
 
+            function draw (){
+                background(0);
+                const density = floor(random(10,20));
+                const cells = generate(density);
+                const padding = 80;
+                const halfWidth = width * 0.5 - padding;
+                const scaler = width - padding * 2
+                const cell = scaler / density;
+                const effects = new Effects(this);
+                const bright = effects.colors.bright();
+                const grain = effects.hatches.stripes(cell, cell, 0.14, bright, 1);
+
+                for ( let j = 0; j < scaler; j += cell) {
+                    updateStates(density, cells);
+
+                    for (let i = 0; i < density; i++) {
+                        const x = i * cell + cell * 0.5 - halfWidth;
+                        const y = j + cell * 0.5 - halfWidth;
+                        const noiseScl = 0.01;
+                        const noiseMult = 80;
+                        const flow = noise(x * noiseScl, y * noiseScl);
+                        const tex = effects.hatches.stripes(cell, cell, 0.02, bright, 1);
+                        texture(grain);
+                        push();
+                        translate(x, y, 0);
+                        if (cells[i] == 1) box(cell, cell, cell +noiseMult * flow);
+                        else image(tex, 0, 0);
+                        pop();
+                    }
+                }             
+            }
             function windowResized() {
                 if (windowWidth < 600) {
                     resizeCanvas(windowWidth, 400);
