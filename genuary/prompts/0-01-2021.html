@@ -36,14 +36,14 @@
                 //noStroke();
                 noFill();
 
-                var tiles = mouseX / 10;
+                var tiles = mouseX / 5;
                 var tileSize = width / tiles ;
 
                 translate(tileSize / 2, tileSize / 2);
 
                 for (var i = 0; i < tiles; i ++) {
                     for (var j = 0; j < tiles; j ++) {
-                        var c = img.get(parseInt(i * tileSize * 1.15+30), parseInt(j*tileSize * 1.15 + 400));
+                        var c = img.get(parseInt(i * tileSize * 1.05+75), parseInt(j*tileSize * 1.05 + 400));
                         var size = map(brightness(c), 0, 255, 5, 0)
                         for (var k = 0; k < 3; k++){
                             var ir=size;       //inner most circle radius
