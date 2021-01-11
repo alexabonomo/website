@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata">
+        <link rel="stylesheet" href="../styles.css">
+    </head>
+    <body>
+        <main class="wrapper">
+            <div id="nav">
+                <h1><a href="../index.html">Home</a></h1>
+                <h1><a href="../prompts/01-01-2021.html"><</a> 01/06/2021 <a href="../prompts/0-03-2021.html">></a></h1>
+            </div>
+            <div id="sketch"></div>
+        </main>        
+        <script src="https://cdn.jsdelivr.net/npm/p5@1.2.0/lib/p5.js"></script>
+        <script src="../library/p5-global-effects.min.js"></script>
+        <script>
+            function setup(){
+                let desktopWidth = windowWidth/1.5;
+                let mobileWidth = windowWidth;
+                let cnv = createCanvas(desktopWidth, 900);
+                if (windowWidth < 600){
+                    let cnv = createCanvas(mobileWidth, 400);
+                }
+                cnv.parent('sketch');
+                noLoop();     
+                }
+            
+            function draw(){
+                background(255);
+                noFill();
+                stroke(0);
+                let S = 300;
+                let points = triang(S);
+                translate(width/2,height/2-100);
+                shp(0,0,points);
+                for (let i = 0; i < 1; i++){
+                    stroke(0);
+                    for (const subd of subdivide(points)){
+                    console.log("subdivision");
+                    shp(0,0,subd);
+                    }
+                }
+            }
+
+            function keyPressed(){
+                redraw();
+            }
+
+            function triang(s){
+                let points = [];
+                for(let i = 0; i < 3; i++) {
+                    let off = noise(millis()*.001)*100; 
+                    let x = sin(TWO_PI * i/3 + random(-0.1,.1)) * s;
+                    let y = cos(TWO_PI * i/3 + random(-0.1,.1)) * s;
+                    points.push(createVector(x,y));
+                }
+
+                return points;
+            }
+
+            rightTriang(s) {
+                let points = [];
+                for(let i = 0; i < 3; i++) {
+                    let x = 
+                }
+            }
+
+            
+            function* subdivide(ps) {
+                let p = 100;
+                //locate the long side, pick a point
+                let d1 = ps[0].dist(ps[1]);//A-B
+                let d2 = ps[1].dist(ps[2]);//B-C
+                let d3 = ps[2].dist(ps[0]);//C-A
+                
+                //pick a point between a and b
+               let t = random (.45,.55);
+                if (d2 > d1 && d2 > d3) { //B-C
+                    let D = p5.Vector.lerp(ps[1], ps[2], t);
+                    let t1 = [D, ps[2], ps[0]]; // new triange = D + C + A
+                    let t2 = [ps[1],ps[0], D]; // new triange = D + A + B
+                    yield t1
+                    yield t2
+                    if(perimeter(t1)> p)
+                    yield* subdivide(t1)
+                    if(perimeter(t2)> p)
+                    yield* subdivide(t2) 
+
+                } else if (d3>d1 && d3 > d2) { //large side: C-A
+                    let E = p5.Vector.lerp(ps[2], ps[0], t);
+                    let t1 = [E, ps[0], ps[1]]; // new triange = E + A + B
+                    let t2 = [E, ps[1], ps[2]]; // new triange = E + B + C
+                    yield t1
+                    yield t2
+                    if(perimeter(t1)> p)
+                    yield* subdivide(t1)
+                    if(perimeter(t2)> p)
+                    yield* subdivide(t2) 
+                }
+                else {
+                    let F = p5.Vector.lerp(ps[0], ps[1], t);
+                    let t1 = [F, ps[1], ps[2]]; //new triangle = F+ B + C
+                    let t2 = [F, ps[2], ps[0]]; // traingle = F + C + A
+                    yield t1;
+                    yield t2;
+                    if(perimeter(t1)> p)
+                    yield* subdivide(t1)
+                    if(perimeter(t2)> p)
+                    yield* subdivide(t2) 
+                }
+            }
+
+            function shp(x,y,points){
+                push();
+                translate(x,y);
+                beginShape();
+                points.forEach(v => {
+                    vertex(v.x,v.y);
+                });
+                endShape(CLOSE);
+                beginShape();
+                points.forEach(v => {
+                    vertex(-v.x,v.y);
+                });
+                endShape(CLOSE);
+                pop();
+            }
+
+            function perimeter(ps){
+                //hack, use perimeter to exit loop
+                let d1 = ps[0].dist(ps[1]);//A-B
+                let d2 = ps[1].dist(ps[2]);//B-C
+                let d3 = ps[2].dist(ps[0]);//C-A
+                return d1+d2+d3;
+            }
+
+            function windowResized() {
+                if (windowWidth < 600) {
+                    resizeCanvas(windowWidth, 400);
+                }
+                if (windowWidth > 600) {
+                    resizeCanvas(windowWidth/1.5, 700);
+                }
+            }
+        </script>
+    </body>
+</html>

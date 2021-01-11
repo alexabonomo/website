@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata">
+        <link rel="stylesheet" href="../styles.css">
+    </head>
+    <body>
+        <main class="wrapper">
+            <div id="nav">
+                <h1><a href="../index.html">Home</a></h1>
+                <h1><a href="../prompts/01-01-2021.html"><</a> 01/06/2021 <a href="../prompts/0-03-2021.html">></a></h1>
+            </div>
+            <div id="sketch"></div>
+        </main>        
+        <script src="https://cdn.jsdelivr.net/npm/p5@1.2.0/lib/p5.js"></script>
+        <script src="../library/p5-global-effects.min.js"></script>
+        <script>
+            let ranges = 10;
+            function setup(){
+                let desktopWidth = windowWidth/1.5;
+                let mobileWidth = windowWidth;
+                let cnv = createCanvas(desktopWidth, 700);
+                if (windowWidth < 600){
+                    let cnv = createCanvas(mobileWidth, 400);
+                }
+                cnv.parent('sketch');
+
+                var line, dot,
+                odd = false, 
+                lines = [],
+                gap = width / 70;
+
+                blendMode(LIGHTEST);
+                noStroke();
+                fill(91, 59, 255, .8);
+                ellipse(width*.65, height/2, 500, 500);
+
+                var canvas = document.querySelector('canvas');
+                var context = canvas.getContext('2d');
+                context.lineJoin = 'bevel';
+
+                for(var y = gap*12; y <= height *.65; y+= gap) {
+                    odd = !odd;
+                    line = [];
+                    for(var x = gap*13; x <= width *.9; x+= gap) {
+                        dot = {x: x, y: y};
+                        line.push({
+                            x: x + noise(200*frameCount/y  + y/12) * gap + random(40),
+                            y: y + noise(frameCount/x  + x/12) * gap + random(40)
+                        });
+                        
+                        context.fill();
+                        
+                    }
+                    lines.push(line);
+                    beginShape();
+                }
+                
+                var dotLine;
+                odd = true;
+
+                for(var y = 0; y < lines.length - 1; y++) {
+                    odd = !odd;
+                    dotLine = [];
+                    for(var i = 0; i < lines[y].length; i++) {
+                        dotLine.push(odd ? lines[y][i]   : lines[y+1][i]);
+                        dotLine.push(odd ? lines[y+1][i] : lines[y][i]);
+                    }
+                    for(var i = 0; i < dotLine.length - 2; i++) {
+                        triang(dotLine[i], dotLine[i+1], dotLine[i+2]);
+                    }
+                }
+
+                function triang(pa, pb, pc) {
+                    context.beginPath();
+                    context.moveTo(pa.x, pa.y);
+                    context.lineTo(pb.x, pb.y);
+                    context.lineTo(pc.x, pc.y);
+                    context.lineTo(pa.x, pa.y);
+                    context.closePath();
+                    context.fillStyle = 'rgba(255, 108, 84, .4)';
+                    context.fill();
+                    context.strokeStyle = '#C32EFF';
+                    context.lineWidth = 0.5;
+                    context.stroke();
+                    
+                }
+
+                for(let i = 0; i < 200; i++){
+                    noFill();
+                    strokeWeight(.25);
+                    beginShape();
+                    stroke(59, 255, 164);
+                    for (let x = gap*random(14, 33); x <= width *random(.7, 1.4); x += 20) {
+                        let n = noise(x * 0.001, i * 0.01, frameCount * 0.02);
+                        let y = map(n, 0, 1, 0, height);
+                        vertex(x, y);
+                        console.log("make lines");
+                    }
+                    endShape();
+                }
+
+            }
+
+
+            // function draw(){
+            //     noFill();
+            //     strokeWeight(.25);
+            //     for (let i = 0; i < ranges; i++) {
+            //         // let point = map(i, 0, ranges, 255, 0);
+            //         stroke(0);
+
+            //     beginShape();
+            //         for (let x = -10; x < width + 11; x += 20) {
+            //             let n = noise(x * 0.001, i * 0.01, frameCount * 0.02);
+            //             let y = map(n, 0, 1, 0, height);
+            //             vertex(x, y);
+            //             console.log("make lines");
+            //         }
+            //     endShape();
+            //     }
+            // }
+
+
+            function windowResized() {
+                if (windowWidth < 600) {
+                    resizeCanvas(windowWidth, 400);
+                }
+                if (windowWidth > 600) {
+                    resizeCanvas(windowWidth/1.5, 700);
+                }
+            }
+        </script>
+    </body>
+</html>
