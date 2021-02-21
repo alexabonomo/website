@@ -14,7 +14,6 @@
 
 <body>
     <div id="main"></div>
-    <div id="main2"></div>
     <div id="sidebar">
         <div class="toggle-btn" onclick="show()">
             <span></span>
@@ -41,6 +40,7 @@
         </article>
         <article>
             <h1 id="proj1">MFA Thesis</h1>
+            <img id="img1" src="images/img01.jpg" style="display: none; width: 90%;" >
             <p>The Quantified Self is best described by Gary Wolf as “self-knowledge through
                 numbers.” William James’ theory of the consciousness of the self and the study of coping
                 inspires drawings that retell personal narratives at the same time reveal traces of the
@@ -59,6 +59,7 @@
         </article>
         <article>
             <h1 id="proj2">Theory of Mind Prism</h1>
+            <img id="img2" src="images/img02.jpg" style="display: none; width: 90%;" >
             <h2>Inspiration</h2>
             <p>Networks, emotion and behavior became a determining factor of interest for UC Davis' Annual Community
                 Book Project centered around the idea of Joy. Theory of mind is the human phenomena that allows us to
@@ -87,6 +88,7 @@
         </article>
         <article>
             <h1 id="proj3">Pitter Patter</h1>
+            <img id="img3" src="images/img3.jpg" style="display: none; width: 90%;" >
             <h2>Inspiration</h2>
             <p>I was invited to participate in a series at <a
                     href="https://www.exploratorium.edu/visit/calendar/field-of-view-storytelling"> The Exploratorium
@@ -112,6 +114,7 @@
         </article>
         <article>
             <h1 id="proj4">Sense</h1>
+            <img id="img4" src="images/img04.jpg" style="display: none; width: 90%;" >
             <h2>Inspiration</h2>
             <p>This started out as a small project at Gray Area foundation of the Arts Immersive showcase. This was a
                 small inkling into a much larger independent research topic while making at UC Davis Center for Design
@@ -130,6 +133,7 @@
         </article>
         <article>
             <h1 id="proj5">AuroraPrint</h1>
+            <img id="img5" src="images/img05.jpg" style="display: none; width: 90%;" >
             <h2>Inspiration</h2>
             <p>Aurora Print was my first time tinkering with physical computing for a large scale installation. The idea
                 started
@@ -154,19 +158,22 @@
         </article>
     </div>
     <div id="about-container">
-        <p>B.F.A. Digital Art and Design, Towson University (2017)</p>
-        <p>M.F.A Design, University of California, Davis (2020)</p>
-        <p>Alexa is a creative coder and design researcher who has spent her career programming mixed reality
-            large-scale and screen-based data visualizations representing the "quantified self". Beginning in the
-            Baltimore art scene, Alexa started a personal practice of meditational drawings and self-teaching herself
-            code before moving to the Bay Area. She has exhibited work in and around San Francisco and East Bay
-            including Kala Art Institute, Gray Area Foundation for the Arts, and the Exploratorium. Alexa has completed
-            her research at UC Davis with a focus on data visualization and personal science. When she is not teaching a
-            digital design course, she spends her time prototyping, experimental art practices, and building code.
-            Alexa's current research consists of remodeling ways to shift conventional uses of common technologies that
-            are meant for the high-functioning world to provide self-knowledge and self-care to individuals who are
-            neurodivergent or have neurodegenerative diseases.</p>
-            <a href="pdfs/CV.pdf">My CV</a>
+        <img id="imgMe" src="images/mebw.jpg" style="display: none; width: 90%;" >
+        <article>
+            <p>M.F.A Design, University of California, Davis (2020)</p>
+            <p>B.F.A. Digital Art and Design, Towson University (2017)</p>
+            <p>Alexa is a creative coder and design researcher who has spent her career programming mixed reality
+                large-scale and screen-based data visualizations representing the "quantified self". Beginning in the
+                Baltimore art scene, Alexa started a personal practice of meditational drawings and self-teaching herself
+                code before moving to the Bay Area. She has exhibited work in and around San Francisco and East Bay
+                including Kala Art Institute, Gray Area Foundation for the Arts, and the Exploratorium. Alexa has completed
+                her research at UC Davis with a focus on data visualization and personal science. When she is not teaching a
+                digital design course, she spends her time prototyping, experimental art practices, and building code.
+                Alexa's current research consists of remodeling ways to shift conventional uses of common technologies that
+                are meant for the high-functioning world to provide self-knowledge and self-care to individuals who are
+                neurodivergent or have neurodegenerative diseases.</p>
+                <a href="pdfs/CV.pdf">My CV</a>
+        </article>
     </div>
     <div id="contact-container">
         www.alexaann.net<br>
@@ -193,6 +200,25 @@
 
             }
             p.draw = function () {
+
+
+                p.push();
+                p.makeBg();
+                p.makeImg();
+                p.pop();
+                p.drawSquare();
+            }
+
+            p.makeBg = function(){
+
+                if(p.mouseIsPressed){
+                    return;
+                }
+                p.background(253, 100, 94);
+                p.drawGrid();
+            }
+
+            p.makeImg = function() {
                 var proj1 = document.querySelector('#proj1');
                 var proj2 = document.querySelector('#proj2');
                 var proj3 = document.querySelector('#proj3');
@@ -201,10 +227,12 @@
                 var work = document.querySelector('#work-container');
                 var about = document.querySelector('#about-container');
                 var home = document.querySelector('#home-container');
+                var viewportWidth = window.innerWidth || document.documentElement.clientWidth;
 
+                if (viewportWidth < 640){
+                    return;
+                }
 
-                p.push();
-                p.makeBg();
                 if (work.style.display === "block" && proj1.getBoundingClientRect().top <= 500) {
                     p.drawPlane(img1);
                 }
@@ -223,18 +251,7 @@
                 if (about.style.display === "block") {
                     p.drawPlane(me);
                 }
-                p.pop();
-                p.drawSquare();
 
-            }
-
-            p.makeBg = function(){
-
-                if(p.mouseIsPressed){
-                    return;
-                }
-                p.background(253, 100, 94);
-                p.drawGrid();
             }
 
             p.drawPlane = function (t) {
@@ -276,7 +293,7 @@
                     p.fill(hue, 100, 100);
                     p.noStroke();
                     p.rect(0, 0, 50, 50);
-                    console.log("x is " + p.mouseX + " and y is " + p.mouseY);
+                    //console.log("x is " + p.mouseX + " and y is " + p.mouseY);
                 }
             }
 
@@ -290,33 +307,6 @@
             }
         };
         new p5(sketch, '#main');
-        // var sketch2 = function(p) {
-        //     let hue;
-        //     p.setup = function(){
-        //         p.createCanvas(window.innerWidth, window.innerHeight, p.WEBGL);
-        //         p.colorMode(p.HSB, 360, 100, 100);
-        //         hue = 0;
-        //     }
-        //     p.draw = function() {
-        //         p.drawSquare();
-        //     }
-        //     p.drawSquare = function () {
-        //         if (p.mouseIsPressed) {
-        //             hue++;
-        //             if (hue > 360) {
-        //                 hue = 0;
-        //             }
-        //             p.translate(-p.width / 2, -p.height / 2)
-        //             p.translate(p.mouseX, p.mouseY);
-        //             p.rectMode(p.CENTER);
-        //             p.fill(hue, 100, 100);
-        //             p.noStroke();
-        //             p.rect(0, 0, 50, 50);
-        //             console.log("x is " + p.mouseX + " and y is " + p.mouseY);
-        //         }
-        //     }
-        // };
-        // new p5(sketch2, "#main2");
     </script>
     <script src="index.js"></script>
 

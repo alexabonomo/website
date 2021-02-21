@@ -42,6 +42,7 @@ a:visited {
     left: -300px;
     transition: .4s;
     padding-top: 50px;
+    z-index: 1;
 }
 
 #sidebar.active {
@@ -133,5 +134,40 @@ main {
 }
 
 @media (max-width: 600px) {
+    #home-container {
+        left: 10%;
+        width:80%;
+    }
+
+    #about-container {
+        top: 15%;
+        left: 10%;
+        width:80%;
+    }
+
+    #about-container article {
+        margin-top: 50px;
+        margin-bottom: 100px;
+    }
+
+    #contact-container {
+        font-size: 30px;
+        left: 10%;
+        width:80%;
+    }
+
+    #work-container {
+        left: 10%;
+        width:80%;
+    }
+
+    #click {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        margin:auto;
+        color: #fff;
+        line-height: 1.5em;
+    }
 
 }
