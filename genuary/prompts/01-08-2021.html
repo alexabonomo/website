@@ -21,7 +21,7 @@
         <script src="https://cdn.jsdelivr.net/npm/p5@1.2.0/lib/p5.js"></script>
         <script src="../library/p5-global-effects.min.js"></script>
         <script>
-            let s,r,d;
+            let img;
             function setup(){
                 desktopWidth = windowWidth/1.5;
                 mobileWidth = windowWidth;
@@ -30,24 +30,66 @@
                     let cnv = createCanvas(mobileWidth, 400);
                 }
                 cnv.parent('sketch');
+                img = loadImage('data/gradient.png')
                 stroke(255);
+                colorMode(HSB);
                 noFill();
                 }
             
             function draw(){
-                background(0);
-                drawCurve(s, r, d);
+                image(img, 0, 0, width, height);
+
+                // first shape (fixed)
+                strokeWeight(3);
+                overlay(255);
+
+                // second shape (dynamically translated/rotated and scaled)
+                var x = map(mouseX, 0, width, -50, 50);
+                var a = map(mouseX, 0, width, -0.5, 0.5);
+                var s = map(mouseY, 0, height, 0.7, 1);
+
+                scale(s);
+
+                strokeWeight(3);
+                
             }
 
-            function drawCurve(s, r, d){
-                // Define the curve points as JavaScript objects
-                let p1 = { x: s, y: s/r};
-                let p2 = { x: s/d, y: s/d};
-                let p3 = { x: s, y: s};
-                let p4 = { x: s/r, y: s};
-                bezier(p1.x, p1.y, p2.x, p2.y, p3.x, p3.y, p4.x, p4.y);  
-            }
+            function overlay(r, b, g) {
+                var w = width;
+                var h = height;
+                noFill;
+                
+                var xoff = 0;
+                for(var gx = 100; gx < width-100; gx+=60){
+                        beginShape();
+                        for (var i = 100; i < h-100; i++) {
+                    //   line(i, -h / 2, i, h / 2);
+                        stroke(r,b,g);
+                        // var y = random(height);
+                        var x = gx + .03*sin(xoff) * width/2 ;
+                        vertex(x, i);
 
+                        xoff += 0.02 ;
+                    }
+                    endShape();
+                    }
+                for(var gy = 100; gy < height-100; gy+=60){
+                    beginShape();
+                    for (var i = 100; i < w-100; i ++) {
+                    //   line(i, -h / 2, i, h / 2);
+                        stroke(r,b,g);
+                        // var y = random(height);
+                        var y = gy + .05*sin(xoff) * height/2 ;
+                        vertex(i, y);
+
+                        xoff += 0.02 ;
+                    }
+                    endShape();
+                    // noLoop();\
+                    }
+                }
+
+            
             
                 
             function windowResized() {
