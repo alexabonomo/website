@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata">
+        <link rel="stylesheet" href="../styles.css">
+    </head>
+    <body>
+        <main class="wrapper">
+            <div id="nav">
+                <h1><a href="../index.html">Home</a></h1>
+                <h1><a href="../prompts/01-01-2021.html"><</a> 01/09/2021 <a href="../prompts/0-03-2021.html">></a></h1>
+            </div>
+            <div id="sketch"></div>
+        </main>        
+        <script src="https://cdn.jsdelivr.net/npm/p5@1.2.0/lib/p5.js"></script>
+        <script src="../library/p5-global-effects.min.js"></script>
+        <script>
+            let kMax;
+            let step;
+            let n = 300; // number of blobs
+            let radius = 0; // diameter of the circle
+            let inter = 2; // difference between the sizes of two blobs
+            let maxNoise = 500;
+            var m = 0;
+            let img;
+
+            let noiseProg = (x) => (x);
+
+            function setup(){
+                desktopWidth = windowWidth/1.5;
+                mobileWidth = windowWidth;
+                let cnv = createCanvas(desktopWidth, 900);
+                if (windowWidth < 600){
+                    let cnv = createCanvas(mobileWidth, 400);
+                }
+                cnv.parent('sketch');
+                angleMode(DEGREES);
+                noFill();
+                //colorMode(HSB);
+                kMax = 0.5;
+                step = 0.01;
+                strokeWeight(1);
+                img = loadImage('data/gradient2.png')
+                
+                }
+
+            
+            function draw() {
+                //background(0);
+                image(img, 0, 0, width, height);
+                
+                let t = frameCount/200;
+                kMax = noise(t/1.5);
+
+                for (let i = n; i >= 0; i--) {
+                    let alpha = 1 - noiseProg(i / n);
+                    //stroke((m +300 / n * i)/.80, 20, 70, 1);
+                    stroke(255, 60);
+                    let size = radius + i * inter;
+                    let k = kMax * sqrt(i/n);
+                    let noisiness = maxNoise * noiseProg(i / n);
+                    blob(size, width/2-25, height/2, k, t + i * step, noisiness);
+                    blob(size, width/2+25, height/2, k, t + i * step, noisiness);
+                }
+            }
+
+            function blob(size, xCenter, yCenter, k, t, noisiness) {
+                beginShape();
+                let angleStep = 360 / 20;
+                for (let theta = 0; theta <= 360 + angleStep * 2; theta += angleStep) {
+                    let r1, r2;
+                    r1 = cos(theta)+1;
+                    r2 = sin(theta)+1;
+                    let r = size + noise(k * r1,  k * r2, t) * noisiness;
+                    let x = xCenter + r * cos(theta);
+                    let y = yCenter + r * sin(theta);
+                    curveVertex(x, y);
+                }
+                endShape();
+            }
+            function windowResized() {
+                if (windowWidth < 600) {
+                    resizeCanvas(windowWidth, 400);
+                }
+                if (windowWidth > 600) {
+                    resizeCanvas(windowWidth/1.5, 700);
+                }
+            }
+        </script>
+    </body>
+</html>
