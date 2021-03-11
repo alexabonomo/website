@@ -9,7 +9,7 @@ function setup(){
     cnv.parent('sketch');
     background(0);
 
-    socket = io.connect('http://localhost:3000');
+    socket = io.connect('http://alexaann.net/experiments/public/index.html');
     socket.on('mouse', newDrawing);
 }
 function newDrawing(data){
