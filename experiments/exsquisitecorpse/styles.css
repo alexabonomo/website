@@ -13,7 +13,8 @@ li{
     font-size: 40px;
 }
 
-#poem {
+#list {
+    font-size: 30px;
     height: 600px;
     overflow: scroll;
 }
@@ -22,4 +23,10 @@ li{
     position: fixed;
     bottom: 10%;
     left: 45%;
+}
+
+@media (max-width: 600px) {
+    #list{
+        font-size: 16px;
+    }
 }

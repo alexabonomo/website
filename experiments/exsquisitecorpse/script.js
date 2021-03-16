@@ -81,10 +81,6 @@ function fetchAllData(){
 
 window.onload = (event) => {
   fetchAllData();
-  // subBtn.addEventListener("click", function(event){
-  //   event.preventDefault();
-  //   createLine();
-  // })
 }
 
 function createLine(){
