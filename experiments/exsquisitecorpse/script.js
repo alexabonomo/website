@@ -13,16 +13,17 @@ var firebaseConfig = {
 
   
   const submit = document.getElementById("add-line");
+  const subBtn = document.getElementById("subBtn");
   const getLine = document.querySelectorAll("#add-line input");
-  const poemList = document.querySelector("main ol");
   const inputs = document.querySelectorAll("#add-line input:not([type=submit])");
+  const button = document.getElementById('button');
 
   let thisRecord;
 
   submit.addEventListener("submit", function(event){
     event.preventDefault();
     const db = firebase.database().ref('poem');
-    const newLine = {};
+    const line = {};
 
     //get date
     var d = new Date();
@@ -31,52 +32,82 @@ var firebaseConfig = {
     for (let i=0; i<inputs.length; i++) {
         let key = inputs[i].getAttribute('name');
         let value= inputs[i].value;
-        newLine[key] = value
+        line[key] = value
+        console.log
     }
-    console.log(newLine);
-    const newLineRef = db.push();
 
-    newLineRef.set({
-        newLine,
-        date: date
-    });
+    var data = {
+      line,
+      date: date
+    }
+  
+    const lineRef = db.push(data);
 
     resetFormFields();
-    // setTimeout(function(){
+    //setTimeout(function(){
     //     window.location.reload(true);
     //     window.location.href = 'entry.html';
-    // }, 1000);
+    //}, 1000);
 });
 
-function displayLines(){
-  const dbRef = firebase.database().ref('poem');
-
-  dbRef.on("child_added", function (snap){
-
-      const line = snap.val();
-      const ids = snap.key;
-
-      //console.log(poem;
-      //console.log(ids);
-  });
-};
-
-displayLines();
+subBtn.addEventListener("click", function(event){
+  createLine();
+})
 
 function resetFormFields(){
   document.getElementById("line").value = "";
 };
 
 
-// for (let i=0; i<getLine.length; i++) {
-//   getLine[i].addEventListener("click", function(event) {
-//       const theListItem = document.createElement("li");
+function addItemsToList(poemLine){
+  var ul = document.getElementById('list');
+  var _line = document.createElement('li');
+  _line.innerHTML = poemLine;
+  //console.log(poemLine);
+  ul.append(_line);
+}
 
-//       theListItem.setAttribute("id", `r-${this.name}`);
-//       theListItem.innerHTML = `<div class="addLine">${this.name}</div>`;
-//       poemList.append(theListItem);
-      
-//       console.log(getLine[i]);
-//   });
-// };
 
+function fetchAllData(){
+  firebase.database().ref('poem').once('value', function(snapshot){
+    snapshot.forEach(
+      function(snap){
+        let poemLine = snap.val().line.line;
+        addItemsToList(poemLine);
+      }
+    )
+  })
+}
+
+window.onload = (event) => {
+  fetchAllData();
+  // subBtn.addEventListener("click", function(event){
+  //   event.preventDefault();
+  //   createLine();
+  // })
+}
+
+function createLine(){
+  var newPostKey = firebase.database().ref().child('poem').push().key;
+  var addedLine = firebase.database().ref('poem');
+  addedLine.off();
+  addedLine.limitToLast(1).on('child_added', function(snapshot) {
+    var newLineAdded = snapshot.val().line.line;
+    var ul = document.getElementById('list');
+    var makeNewLine = document.createElement('li');
+    makeNewLine.innerHTML = newLineAdded;
+    ul.appendChild(makeNewLine);
+
+    //console.log(newLineAdded);
+    console.log(newLineAdded);
+  });
+  // var newLine = firebase.database().ref('poem/'+ newPostKey)
+  // newLine.once('value', function(snapshot){
+  //       console.log(snapshot.val().line.line);
+  // });
+  
+  
+  //console.log('function called');
+}
+
+//createLine();

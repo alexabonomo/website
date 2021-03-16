@@ -1,3 +1,25 @@
 body{
     font-family: 'Inconsolata', monospace;
 }
+
+section{
+    width:70%;
+    margin: auto;
+    text-align: center;
+}
+
+li{
+    list-style: none;
+    font-size: 40px;
+}
+
+#poem {
+    height: 600px;
+    overflow: scroll;
+}
+
+#input {
+    position: fixed;
+    bottom: 10%;
+    left: 45%;
+}

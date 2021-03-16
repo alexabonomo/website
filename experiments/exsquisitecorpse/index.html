@@ -15,22 +15,23 @@
     </head>
     <body>
         <section>
-            <h1>Write a line</h1>
-            <div id="lines">
-                <main>
-                    <ol class="container"></ol>
-                </main>
-            </div>
-        </section>
-        <section>
-            <form id="add-line" >
-                <div>
-                    <input type="text" id="line" name="line" placeholder="add a line to the poem">
+            <article>
+                <h1>Write a line</h1>
+                <div id="poem">
+                    <ul id="list">
+                    </ul>
                 </div>
-                <div id=subBtnHolder>
-                    <input type="submit" name="submit" value="Submit" id="subBtn">
-                </div>
-            </form>
+            </article>
+            <article id="input">
+                <form id="add-line" >
+                    <div>
+                        <input type="text" id="line" name="line" placeholder="add a line to the poem">
+                    </div>
+                    <div id="subBtnHolder">
+                        <input type="submit" name="submit" value="Submit" id="subBtn">
+                    </div>
+                </form>
+            </article>
         </section>
         <script src="https://www.gstatic.com/firebasejs/8.3.0/firebase-app.js"></script>
         <script src="https://www.gstatic.com/firebasejs/8.3.0/firebase-database.js"></script>
