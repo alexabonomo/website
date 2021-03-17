@@ -20,6 +20,13 @@ var firebaseConfig = {
 
   let thisRecord;
 
+  function updateScroll(){
+    var poem = document.getElementById("poem");
+    poem.scrollTop = poem.scrollHeight - poem.clientHeight;
+  }
+
+  updateScroll();
+
   submit.addEventListener("submit", function(event){
     event.preventDefault();
     const db = firebase.database().ref('poem');
@@ -48,6 +55,7 @@ var firebaseConfig = {
     //     window.location.reload(true);
     //     window.location.href = 'entry.html';
     //}, 1000);
+    updateScroll();
 });
 
 subBtn.addEventListener("click", function(event){
