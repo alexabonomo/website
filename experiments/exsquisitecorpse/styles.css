@@ -12,20 +12,46 @@ li{
     list-style: none;
 }
 
+#poem {
+    display: none;
+}
+
 #list {
     font-size: 30px;
     height: 600px;
     overflow: scroll;
 }
 
-#input {
-    position: fixed;
-    bottom: 10%;
-    left: 45%;
+#line {
+    font-family: 'Inconsolata', monospace;
+    font-size: 16px;
+    outline: none;
+    border: none;
+    border-bottom: 2px solid rgb(42, 41, 40);
+    padding: 0px 20px 0px 20px;
+    background: transparent;
+    text-align: center;
+    width: 800px;
+}
+
+#subBtn {
+    font-family: 'Inconsolata', monospace;
+    background-color: #3300f0;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 30px;
+    margin-top: 20px;
 }
 
 @media (max-width: 600px) {
     #list{
         font-size: 16px;
+    }
+
+    #line{
+        width: 300px;
     }
 }

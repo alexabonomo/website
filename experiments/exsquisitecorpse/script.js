@@ -20,12 +20,12 @@ var firebaseConfig = {
 
   let thisRecord;
 
-  function updateScroll(){
-    var poem = document.getElementById("poem");
-    poem.scrollTop = poem.scrollHeight - poem.clientHeight;
-  }
+  // function updateScroll(){
+  //   var poem = document.getElementById("poem");
+  //   poem.scrollTop = poem.scrollHeight - poem.clientHeight;
+  // }
 
-  updateScroll();
+  // updateScroll();
 
   submit.addEventListener("submit", function(event){
     event.preventDefault();
@@ -55,7 +55,10 @@ var firebaseConfig = {
     //     window.location.reload(true);
     //     window.location.href = 'entry.html';
     //}, 1000);
-    updateScroll();
+    // updateScroll();
+
+    var poem = document.getElementById("poem");
+    poem.style.display = "block";
 });
 
 subBtn.addEventListener("click", function(event){
